@@ -1,0 +1,1879 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Bike Ride - منصة عربية ضخمة للزخارف والرموز والخطوط وتنسيق النصوص وصناعة البايو.">
+    <meta property="og:title" content="Bike Ride — عالم الزخارف">
+    <meta property="og:description" content="آلاف التركيبات والزخارف الحقيقية وصانع زخارف متقدم.">
+    <title>Bike Ride | عالم الزخارف</title>
+    <style>
+        /* ===== RESET & ROOT ===== */
+        :root {
+            --gold: #d4af37;
+            --gold2: #f9e28c;
+            --gold-glow: 0 0 20px rgba(212, 175, 55, 0.3);
+            --bg: #0b0a0a;
+            --card: #1a1717;
+            --text: #f5f0e8;
+            --muted: #a89880;
+            --line: #3a322a;
+            --soft: #2a221a;
+            --shadow: 0 15px 45px rgba(0, 0, 0, 0.7);
+            --blue: var(--gold);
+            --blue2: var(--gold2);
+            --radius: 16px;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', 'Noto Sans Arabic', system-ui, sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 10px;
+        }
+
+        /* ===== TYPOGRAPHY & UTILITY ===== */
+        .gold {
+            color: var(--gold);
+        }
+        .muted {
+            color: var(--muted);
+        }
+        .text-center {
+            text-align: center;
+        }
+        .flex {
+            display: flex;
+        }
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+        .gap-1 {
+            gap: 10px;
+        }
+        .gap-2 {
+            gap: 16px;
+        }
+        .items-center {
+            align-items: center;
+        }
+        .grow {
+            flex: 1;
+        }
+
+        /* ===== BUTTONS & CARDS ===== */
+        button {
+            cursor: pointer;
+            font: inherit;
+            border: none;
+            background: none;
+            color: inherit;
+        }
+        .primary,
+        .secondary,
+        .chip,
+        .tab {
+            padding: 10px 18px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .primary {
+            background: var(--gold);
+            color: #0b0a0a;
+            border: 1px solid var(--gold);
+        }
+        .primary:hover {
+            background: var(--gold2);
+            box-shadow: var(--gold-glow);
+            transform: translateY(-2px);
+        }
+        .secondary {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--line);
+        }
+        .secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        .chip,
+        .tab {
+            background: var(--soft);
+            border: 1px solid var(--line);
+            color: var(--muted);
+        }
+        .chip.on,
+        .tab.on {
+            background: var(--gold);
+            color: #0b0a0a;
+            border-color: var(--gold);
+        }
+        .chip:hover,
+        .tab:hover {
+            border-color: var(--gold);
+            color: var(--text);
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin: 14px 0;
+            box-shadow: var(--shadow);
+            transition: border-color 0.2s;
+        }
+        .card:hover {
+            border-color: var(--gold);
+        }
+
+        /* ===== HEADER ===== */
+        .top {
+            height: 70px;
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(11, 10, 10, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 16px;
+        }
+        .logo {
+            font-weight: 900;
+            font-size: 28px;
+            letter-spacing: 6px;
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .logo span {
+            -webkit-text-fill-color: initial;
+            color: var(--gold);
+        }
+        .ico {
+            position: absolute;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: var(--soft);
+            color: var(--gold);
+            font-size: 22px;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--line);
+            transition: all 0.2s;
+        }
+        .ico:hover {
+            border-color: var(--gold);
+            box-shadow: var(--gold-glow);
+        }
+        .menu {
+            right: 14px;
+        }
+        .theme {
+            left: 14px;
+        }
+
+        /* ===== SIDEBAR ===== */
+        .side {
+            position: fixed;
+            z-index: 40;
+            top: 0;
+            right: -340px;
+            width: 310px;
+            height: 100vh;
+            background: var(--card);
+            border-left: 1px solid var(--line);
+            padding: 20px 16px;
+            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+        }
+        .side.open {
+            right: 0;
+        }
+        .sidehead {
+            padding: 10px 0 20px;
+            border-bottom: 1px solid var(--line);
+            margin-bottom: 12px;
+        }
+        .nav {
+            display: block;
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: var(--radius);
+            text-align: right;
+            color: var(--muted);
+            transition: all 0.15s;
+            margin: 2px 0;
+            font-weight: 500;
+        }
+        .nav:hover,
+        .nav.on {
+            background: var(--soft);
+            color: var(--gold);
+        }
+
+        /* ===== MAIN LAYOUT ===== */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 16px;
+        }
+        .page {
+            display: none;
+            animation: fadeUp 0.3s ease;
+        }
+        .page.on {
+            display: block;
+        }
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 480px;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            padding: 40px 10px;
+        }
+        .orb {
+            width: 120px;
+            height: 120px;
+            border-radius: 40px;
+            background: linear-gradient(135deg, var(--gold), var(--gold2));
+            display: grid;
+            place-items: center;
+            color: #0b0a0a;
+            font-size: 64px;
+            font-weight: 900;
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.3);
+            transform: rotate(-4deg);
+            margin: 0 auto 16px;
+        }
+        .hero h1 {
+            font-size: clamp(48px, 10vw, 96px);
+            letter-spacing: 10px;
+            margin: 8px 0 4px;
+            background: linear-gradient(135deg, var(--gold), #fff8e7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero .search {
+            display: flex;
+            gap: 10px;
+            max-width: 600px;
+            margin: 20px auto;
+            width: 100%;
+        }
+
+        /* ===== FORM ELEMENTS ===== */
+        input,
+        textarea,
+        select {
+            font: inherit;
+            border: 1px solid var(--line);
+            background: var(--bg);
+            color: var(--text);
+            padding: 12px 16px;
+            border-radius: var(--radius);
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+        }
+        select option {
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        /* ===== GRIDS & SYMBOLS ===== */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
+        }
+        .symbols {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+            gap: 10px;
+        }
+        .symbol {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 14px 8px;
+            text-align: center;
+            font-size: 20px;
+            transition: all 0.15s;
+            word-break: break-word;
+            min-height: 70px;
+            display: grid;
+            place-items: center;
+            color: var(--text);
+        }
+        .symbol:hover {
+            border-color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: var(--gold-glow);
+        }
+        .catcard {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 18px 12px;
+            text-align: center;
+            transition: all 0.15s;
+            color: var(--text);
+        }
+        .catcard:hover {
+            border-color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: var(--gold-glow);
+        }
+        .catcard b {
+            display: block;
+            font-size: 32px;
+            margin-bottom: 6px;
+        }
+
+        /* ===== RESULT CARDS ===== */
+        .result {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid var(--line);
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 12px 16px;
+            margin: 8px 0;
+            transition: border-color 0.2s;
+        }
+        .result:hover {
+            border-color: var(--gold);
+        }
+        .resulttext {
+            font-size: 20px;
+            white-space: pre-wrap;
+            word-break: break-word;
+            flex: 1;
+        }
+
+        /* ===== STUDIO ===== */
+        .studio {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .previewbox {
+            min-height: 400px;
+            display: grid;
+            place-items: center;
+            padding: 20px;
+            border-radius: var(--radius);
+            background: linear-gradient(145deg, #1a1717, #2a221a);
+            border: 1px solid var(--line);
+        }
+        .paper {
+            width: 100%;
+            min-height: 300px;
+            border: 4px solid var(--gold);
+            background: #0b0a0a;
+            color: var(--text);
+            border-radius: var(--radius);
+            display: grid;
+            place-items: center;
+            padding: 20px;
+            transition: border-color 0.2s;
+        }
+        .range {
+            width: 100%;
+            accent-color: var(--gold);
+        }
+
+        /* ===== TOAST & MODAL ===== */
+        .toast {
+            position: fixed;
+            z-index: 100;
+            bottom: 24px;
+            left: 50%;
+            transform: translate(-50%, 120px);
+            padding: 12px 24px;
+            background: #1a1717;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            border-radius: var(--radius);
+            transition: transform 0.3s ease;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+        }
+        .toast.show {
+            transform: translate(-50%, 0);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 80;
+            background: rgba(0, 0, 0, 0.85);
+            place-items: center;
+            padding: 16px;
+            backdrop-filter: blur(4px);
+        }
+        .modal.show {
+            display: grid;
+        }
+        .modalbox {
+            background: var(--card);
+            border: 1px solid var(--gold);
+            border-radius: var(--radius);
+            padding: 24px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: var(--shadow);
+        }
+        .big {
+            padding: 24px;
+            border-radius: var(--radius);
+            background: var(--soft);
+            font-size: 24px;
+            white-space: pre-wrap;
+            word-break: break-word;
+            text-align: center;
+            border: 1px solid var(--line);
+            margin: 12px 0;
+        }
+
+        /* ===== TABS ===== */
+        .tabs,
+        .chips,
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+        .tool {
+            display: none;
+        }
+        .tool.on {
+            display: block;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media(max-width:700px) {
+            main {
+                padding: 12px;
+            }
+            .studio {
+                grid-template-columns: 1fr;
+            }
+            .symbols {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .hero {
+                min-height: 400px;
+            }
+            .top {
+                height: 60px;
+            }
+            .logo {
+                font-size: 22px;
+            }
+            .side {
+                width: 280px;
+                right: -300px;
+            }
+        }
+    
+/* ===== BIKE RIDE COLOR THEMES =====
+   Default: Night = Black + Gold
+   Light: White + Dark Blue
+*/
+:root{
+  --bg:#080808;
+  --panel:#111111;
+  --panel2:#171717;
+  --text:#f7f2e8;
+  --muted:#a99f90;
+  --line:#332a17;
+  --gold:#d4af37;
+}
+body{background:var(--bg);color:var(--text)}
+body.light{
+  --bg:#ffffff;
+  --panel:#f4f8fc;
+  --panel2:#e8f0f7;
+  --text:#0b2239;
+  --muted:#50657a;
+  --line:#c8d8e7;
+  --gold:#0b3a63;
+}
+body.light .logo{color:#0b3a63}
+body.light .logo span{color:#0b3a63}
+body.light .gold{color:#0b3a63}
+body.light .primary{background:#0b3a63;color:#fff}
+body.light .chip.on,
+body.light .tab.on,
+body.light .nav.on{background:#0b3a63;color:#fff;border-color:#0b3a63}
+
+
+/* ===== LEGENDARY NAME FONTS ===== */
+#fontSel{min-width:170px}
+#nameOut .resulttext{unicode-bidi:plaintext}
+
+
+/* ===== BIKE RIDE: BLACK & BURGUNDY ROYAL SKIN ===== */
+:root{--gold:#8f1838;--gold2:#d84a68;--gold-glow:0 0 24px rgba(143,24,56,.34);--bg:#070607;--card:#141014;--panel:#141014;--panel2:#1d151b;--text:#f8f1f3;--muted:#b8a4ad;--line:#48202f;--soft:#24131b;--shadow:0 18px 50px rgba(0,0,0,.72)}
+body{background:radial-gradient(ellipse at 50% -20%,rgba(100,12,40,.22),transparent 55%),var(--bg)}
+.primary,.chip.on,.tab.on{background:linear-gradient(135deg,#70112c,#a52245);border-color:#a52b4d;color:#fff}
+.primary:hover{background:linear-gradient(135deg,#8e1738,#d84a68);box-shadow:0 0 24px rgba(143,24,56,.35)}
+.logo{letter-spacing:2px}
+.brandmark{display:flex;align-items:center;gap:10px;direction:ltr;font-weight:900;letter-spacing:2px}
+.brand-emblem{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(145deg,#a9254a,#330915);border:1px solid #d84a68;color:#fff;font-size:14px;box-shadow:0 0 20px #8f183833;transform:skew(-7deg)}
+.brand-name{font-size:18px;color:#f8f1f3;text-shadow:0 0 18px #8f183833}.brand-name b{color:#d84a68}
+.orb{position:relative;background:linear-gradient(145deg,#a9254a,#280811);color:#fff;border:1px solid #d84a68;box-shadow:0 20px 60px rgba(143,24,56,.34);transform:rotate(-4deg);font-size:42px;letter-spacing:1px}
+.orb small{position:absolute;right:12px;top:5px;font-size:16px;color:#ffdbe4}
+.hero h1{letter-spacing:5px;background:linear-gradient(135deg,#d84a68,#fff0f4 55%,#8f1838);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.previewbox{background:linear-gradient(145deg,#171016,#2b101b)}.paper{border-color:#8f1838}
+#trendCanvas{width:100%;max-width:520px;aspect-ratio:9/16;background:#100a0e;border:1px solid #63233a;border-radius:18px;display:block;margin:auto;box-shadow:0 18px 48px #0009}
+.trend-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,420px);gap:18px;align-items:start}.trend-controls{display:grid;gap:12px}.trend-badge{display:inline-block;border:1px solid #8f1838;border-radius:999px;padding:4px 12px;color:#e66a86;background:#38111f;font-size:12px}
+@media(max-width:760px){.trend-layout{grid-template-columns:1fr}.brand-name{font-size:14px}.brand-emblem{width:34px;height:34px}}
+
+</style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="top">
+        <button class="ico menu" aria-label="فتح القائمة" onclick="toggleMenu()">☰</button>
+        <div class="brandmark"><span class="brand-emblem">BR</span><span class="brand-name">BIKE <b>RIDE</b></span></div>
+        <button class="ico theme" id="themeBtn" aria-label="تغيير المظهر" onclick="toggleTheme()">☀️</button>
+    </header>
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="side" id="side">
+        <div class="sidehead">
+            <div class="brandmark"><span class="brand-emblem">BR</span><span class="brand-name">BIKE <b>RIDE</b></span></div>
+            <p class="muted">عالم الزخارف وصناعة النصوص</p>
+        </div>
+        <button class="nav on" onclick="go('home',this)">🏠 الرئيسية</button>
+        <button class="nav" onclick="go('names',this)">✍️ زخرفة الأسماء</button>
+        <button class="nav" onclick="go('library',this)">📚 مكتبة الزخارف</button>
+        <button class="nav" onclick="go('social',this)">📱 منصات التواصل</button>
+        <button class="nav" onclick="go('bio',this)">🧬 مولد البايو</button>
+        <button class="nav" onclick="go('request',this)">🤖 مولد حسب الوصف</button>
+        <button class="nav" onclick="go('studio',this)">🎨 Bike Ride Studio</button>
+        <button class="nav" onclick="go('packs',this)">📦 الحزم الجاهزة</button>
+        <button class="nav" onclick="go('trend',this)">🎞️ مصنع الترندات</button>
+        <button class="nav" onclick="go('spam',this)">💥 SPAM ZONE</button>
+        <button class="nav" onclick="go('fav',this);showSaved('fav')">⭐ المفضلة</button>
+        <button class="nav" onclick="go('history',this);showSaved('history')">📜 آخر المنسوخ</button>
+    </aside>
+
+    <!-- ===== MAIN ===== -->
+    <main>
+
+        <!-- HOME -->
+        <section id="home" class="page on">
+            <div class="hero">
+                <div>
+                    <div class="orb"><span>BR</span><small>✦</small></div>
+                    <h1>BIKE RIDE</h1>
+                    <p class="muted">مكتبة ضخمة من الرموز والزخارف وصانع نصوص متقدم</p>
+                    <div class="search">
+                        <input id="quick" class="grow" placeholder="اكتب اسم أو ابحث عن زخرفة">
+                        <button class="primary" onclick="quickGo()">ابدأ</button>
+                    </div>
+                </div>
+            </div>
+            <h2 class="gold">✨ استكشف</h2>
+            <div id="homeCats" class="grid"></div>
+        </section>
+
+        <!-- NAMES -->
+        <section id="names" class="page">
+            <h1 class="gold">✍️ زخرفة الأسماء</h1>
+            <div class="card row">
+                <input id="nameInput" class="grow" placeholder="اكتب اسمك بالعربي أو الإنجليزي">
+                <select id="fontSel">
+                    <option value="all">⚡ كل الخطوط الأسطورية</option>
+                    <option value="normal">الخط الطبيعي</option>
+                    <option value="bold">𝐁 Bold</option>
+                    <option value="italic">𝐼 Italic</option>
+                    <option value="boldItalic">𝑩 Bold Italic</option>
+                    <option value="mono">𝙼 Monospace</option>
+                    <option value="double">𝔻 Double</option>
+                    <option value="script">𝒮 Script</option>
+                    <option value="boldScript">𝓢 Bold Script</option>
+                    <option value="fraktur">𝔉 Gothic</option>
+                    <option value="boldFraktur">𝕲 Bold Gothic</option>
+                    <option value="sans">𝖲 Sans</option>
+                    <option value="sansBold">𝗦 Sans Bold</option>
+                    <option value="circled">ⓒ Circled</option>
+                    <option value="squared">🄱 Squared</option>
+                </select>
+                <button class="primary" onclick="makeNames()">إنشاء زخارف</button>
+            </div>
+            <div id="nameOut"></div>
+        </section>
+
+        <!-- LIBRARY -->
+        <section id="library" class="page">
+            <h1 class="gold">📚 مكتبة الزخارف</h1>
+            <div class="card">
+                <input id="libSearch" class="grow" oninput="renderLibrary()" placeholder="ابحث عن قلب، نجمة، دارك، إطار، ألعاب...">
+                <div id="catChips" class="chips"></div>
+            </div>
+            <div id="libraryOut" class="symbols"></div>
+        </section>
+
+        <!-- SOCIAL -->
+        <section id="social" class="page">
+            <h1 class="gold">📱 تنسيق منصات التواصل</h1>
+            <div class="card">
+                <div id="platformTabs" class="tabs"></div>
+                <textarea id="socialInput" rows="4" oninput="updateSocial()">اكتب النص الذي تريد تنسيقه</textarea>
+                <div id="formatTabs" class="tabs"></div>
+                <div id="socialPreview" class="big"></div>
+                <button class="primary" onclick="copyText(socialResult)">📋 نسخ النتيجة</button>
+            </div>
+        </section>
+
+        <!-- BIO -->
+        <section id="bio" class="page">
+            <h1 class="gold">🧬 مولد البايو</h1>
+            <div class="card row">
+                <input id="bioName" placeholder="الاسم">
+                <input id="bioDesc" class="grow" placeholder="الوصف">
+                <select id="bioStyle">
+                    <option value="royal">ملكي</option>
+                    <option value="cute">كيوت</option>
+                    <option value="dark">دارك</option>
+                    <option value="simple">بسيط</option>
+                </select>
+                <button class="primary" onclick="makeBio()">توليد</button>
+            </div>
+            <div id="bioOut"></div>
+        </section>
+
+        <!-- REQUEST -->
+        <section id="request" class="page">
+            <h1 class="gold">🤖 صانع الزخارف حسب الوصف</h1>
+            <div class="card">
+                <input id="reqText" placeholder="النص أو الاسم">
+                <textarea id="reqDesc" rows="4" placeholder="اكتب كأنك عم تشرح لصاحبك: بدي شي ملكي فيه تاج ونجوم، أو شي كيوت وقلوب..."></textarea>
+                <button class="primary" onclick="makeRequest()">اصنع لي</button>
+            </div>
+            <div id="reqOut"></div>
+        </section>
+
+        <!-- STUDIO -->
+        <section id="studio" class="page">
+            <h1 class="gold">🎨 Bike Ride Studio</h1>
+            <div class="tabs">
+                <button class="tab on" onclick="studioTab('designer',this)">المصمم</button>
+                <button class="tab" onclick="studioTab('surprise',this)">فاجئني</button>
+                <button class="tab" onclick="studioTab('formatter',this)">منسق النص</button>
+            </div>
+            <div id="designer" class="tool on">
+                <div class="studio">
+                    <div class="card">
+                        <input id="studioText" value="BIKE RIDE" oninput="updateStudio()">
+                        <select id="frameSel" onchange="updateStudio()"></select>
+                        <div class="row">
+                            <label>لون النص <input id="textColor" type="color" value="#d4af37" oninput="updateStudio()"></label>
+                            <label>لون الإطار <input id="borderColor" type="color" value="#d4af37" oninput="updateStudio()"></label>
+                        </div>
+                        <label>الحجم <input id="fontSize" class="range" type="range" min="18" max="110" value="52" oninput="updateStudio()"></label>
+                        <div class="row">
+                            <button class="primary" onclick="copyText(studioValue())">📋 نسخ</button>
+                            <button class="secondary" onclick="saveFav(studioValue())">⭐ حفظ</button>
+                        </div>
+                    </div>
+                    <div class="previewbox">
+                        <div id="paper" class="paper">
+                            <div id="studioPreview"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="surprise" class="tool">
+                <div class="card row">
+                    <select id="surpriseCat"></select>
+                    <button class="primary" onclick="surprise()">🎲 فاجئني</button>
+                </div>
+                <div id="surpriseOut" class="symbols"></div>
+            </div>
+            <div id="formatter" class="tool">
+                <div class="card">
+                    <textarea id="formatInput" rows="5" placeholder="اكتب النص وحدد الجزء المطلوب تنسيقه"></textarea>
+                    <div class="tabs">
+                        <button class="tab" onclick="wrap('**','**')">عريض</button>
+                        <button class="tab" onclick="wrap('_','_')">مائل</button>
+                        <button class="tab" onclick="wrap('~','~')">يتوسطه خط</button>
+                        <button class="tab" onclick="wrap('`','`')">كود</button>
+                        <button class="tab" onclick="wrap('```','```')">كتلة كود</button>
+                    </div>
+                    <button class="primary" onclick="copyText(document.getElementById('formatInput').value)">📋 نسخ</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PACKS -->
+        <section id="packs" class="page">
+            <h1 class="gold">📦 الحزم الجاهزة</h1>
+            <div id="packsOut"></div>
+        </section>
+
+        <!-- SPAM ZONE -->
+        <section id="spam" class="page">
+            <h1 class="gold">💥 SPAM ZONE</h1>
+            <div class="card">
+                <p class="muted">أكثر من 1500 رمز وتركيبة فوضوية مستوحاة من ثقافة السبام. اضغط على أي رمز لنسخه.</p>
+                <input id="spamSearch" class="grow" oninput="renderSpam()" placeholder="ابحث في زخارف السبام...">
+                <div id="spamChips" class="chips"></div>
+            </div>
+            <div id="spamOut" class="symbols"></div>
+        </section>
+
+
+        <!-- BIKE RIDE TREND FACTORY -->
+        <section id="trend" class="page">
+            <h1 class="gold">🎞️ مصنع الترندات — Bike Ride</h1>
+            <p class="muted">اصنع مقدمة فيديو عمودية بأسلوب الجرائد المتحركة، مع اسم مكتوب بخط بارز ومحدد بقلم تعليم. عاين الحركة ثم سجّلها كفيديو.</p>
+            <div class="card trend-layout">
+                <div class="trend-controls">
+                    <label>الاسم أو العبارة الرئيسية<input id="trendName" value="BIKE RIDE" maxlength="42" oninput="drawTrendFrame(0)"></label>
+                    <label>عنوان الجريدة<input id="trendHeadline" value="الشخصية التي يتحدث عنها الجميع" maxlength="70" oninput="drawTrendFrame(0)"></label>
+                    <label>النص الصغير<input id="trendSub" value="اسم يتصدر المشهد اليوم" maxlength="90" oninput="drawTrendFrame(0)"></label>
+                    <label>لون قلم التعليم<select id="trendMarker" onchange="drawTrendFrame(0)"><option value="#e3bd42">ذهبي</option><option value="#d83d55">أحمر</option><option value="#7bc6a4">أخضر</option><option value="#78a9ff">أزرق</option></select></label>
+                    <label>سرعة الحركة<select id="trendSpeed"><option value="1">سينمائية</option><option value="1.5" selected>ترند سريع</option><option value="2.2">سريعة جداً</option></select></label>
+                    <div class="row"><button class="primary" onclick="startTrendPreview()">▶ تشغيل المعاينة</button><button class="secondary" onclick="stopTrendPreview()">Ⅱ إيقاف</button></div>
+                    <button class="primary" id="trendRecordBtn" onclick="recordTrendVideo()">⏺ إنشاء فيديو WebM</button>
+                    <p class="muted" id="trendStatus">جاهز للمعاينة. اختر الاسم والعنوان ثم شغّل الحركة.</p>
+                    <p class="muted">ملاحظة: حفظ الفيديو يعتمد على دعم المتصفح لتسجيل Canvas. مدة المقطع نحو 8 ثوانٍ ويُعاد المشهد داخل الفيديو.</p>
+                </div>
+                <div><span class="trend-badge">BIKE RIDE ORIGINAL • NEWSPAPER INTRO</span><canvas id="trendCanvas" width="720" height="1280" aria-label="معاينة فيديو الجرائد"></canvas></div>
+            </div>
+        </section>
+
+        <!-- FAV & HISTORY -->
+        <section id="fav" class="page"><h1 class="gold">⭐ المفضلة</h1><div id="favOut"></div></section>
+        <section id="history" class="page"><h1 class="gold">📜 آخر المنسوخ</h1><div id="historyOut"></div></section>
+
+    </main>
+
+    <!-- ===== MODAL & TOAST ===== -->
+    <div id="modal" class="modal">
+        <div class="modalbox">
+            <h2 class="gold">🔍 معاينة الزخرفة</h2>
+            <div id="modalText" class="big"></div>
+            <div class="row">
+                <button class="primary" onclick="copyText(selectedText)">📋 نسخ</button>
+                <button class="secondary" onclick="saveFav(selectedText)">⭐ حفظ</button>
+                <button class="secondary" onclick="closeModal()">إغلاق</button>
+            </div>
+        </div>
+    </div>
+    <div id="toast" class="toast"></div>
+
+    <script>
+        // ============================================================
+        //  DATA: SPAM_LIB (مصنع الرموز الفوضوية)
+        // ============================================================
+        const SPAM_LIB = [
+            // === سبام كلاسيك ===
+            { category: 'سبام كلاسيك', items: [
+                    '▶︎ •၊၊||၊|။||||။၊|• 0:10', '⚠️ ก็็็็็็็็็็็็็็็็็', '⛔ ▓▓▓▓▓▓', '▄︻デ══━一',
+                    '（ ͜.人 ͜.）', 'εつ▄█▀█●', '⃢⃢ ඞyou are gඞy', '╾━╤デ╦︻ඞා',
+                    '็็็็็็็็็็็็็', '⫘⫘⫘⫘⫘⫘', 'ㅤㅤㅤㅤㅤㅤㅤ', '☥ ♥️⃢⃢♥️⃢♥️⃢',
+                    '⊹ ࣪ ﹏﹏﹏⊹ ࣪ ˖', '⎛⎝ ≽ > ⩊ < ≼ ⎠⎞', '☑️Certified Gay', '₍^. .^₎⟆',
+                    'I know your ~ P DIDDY', '꧁⎝ ༺✧༻ ⎠꧂', '9/11 ✋', 'ᥫ᭡.ִֶָ',
+                    'ﮩ٨ـﮩﮩ٨ـ♡ﮩ٨ـﮩﮩ٨ـ', '❤️ (‿ˠ‿)', 'Ɑ͞ ̶͞ ̶͞ ̶͞ لں͞', '╾━╤デ╦︻(•_- )',
+                    '☆. .☆ ‿ ✎﹏﹏﹏﹏', '˚˖ִ໋❀ ूाीू', 'ᶠᶸᶜᵏᵧₒᵤ!', '☚⍢⃝☚',
+                    '°❀⋆.ೃ࿔*:･', '⚠︎ ﷲ﷽', '⋆.˚ ⋆.˚', '✌︎㋡',
+                    '( ° ͜ʖ͡°)╭∩╮', 'ྀི❤︎ྀི', '꧁ঔৣ☬✞ART✞☬ঔৣ꧂', '▶• ılıılıılıılıılıılı। 0',
+                    'ㅤ♡ྀི ᅠ ᅠ ᅠ ᅠ ᅠ ᅠ', 'ඞ sussybAkA ඞ', '⚞^. .^⚟', 'ʕ•ﻌ•ʔ',
+                    '╰┈➤', 'Ɑ͞ ̶͞ ̶͞ ̶͞ ̶͞ لﮞ͞', 'H̶̿̀͊̍̈́͑̓̈́̃̆́', '⋆˚꩜｡',
+                    'stein island', '────୨ৎ────', 'ก็็็็็็็็็็็็', 'જ⁀➴',
+                    '⎛⎝( ` ᢍ ´ )⎠⎞ᵐᵘʰᵃʰᵃ', '୧⍤⃝', '≽(◉˕ ◉ ≼マ', '-ˋˏ✄┈┈┈┈ ➤',
+                    '⃝ ﷽ ✮⋆˙', '-ूाीू', '⋆༺☠︎︎༻⋆', '⚫█▀█▄▄',
+                    '(☞ ͡° ͜ʖ ͡°)☞', '⃤⃟⃝ ็็็็็็็็็็็', '❌ ⋆｡‧₊°♱༺❦︎༻♱༉‧₊˚.', '▬▬ι══════ﺤ',
+                    '⃝ ็็็็็็็็็็็็ ℒ ᥫ᭡. ˎˊ˗', '⃝️ ⃝️', '⌐╦ᡁ᠊╾━', '❓ ⁶♂️⁷',
+                    '⠀⃝ ⠀⃝ ⠀⃝ ⠀⃝ㅤ', 'ΔΜØŇǤ ỮŞ ඞ', '. ⃤♡⃤⃤', '¯\_(ツ)_/¯',
+                    '( ͜ₒ ㅅ ͜ ₒ) . ⋮ ᥙℓᥱʂ .ᐟ', 'ֹ ₊ ꒱ ( )', '☾ ﷽', 'ヽ༼ ʘ̚ل͜ʘ̚༽ﾉ',
+                    '˗ˏˋ ˎˊ˗', 'ശ്ദി(ᵔᗜᵔ)', '❤️❤️❤️❤️❤️❤️', '│ ⓘ ≽^• ˕ • ྀི≼',
+                    '️ ݁ ˖Ი⋆', '✅ ⊹₊˚‧︵‿₊୨ᰔ୧₊‿︵‧˚₊⊹', '՞ ܸ.ˬ.ܸ՞', '✰ ╭∩╮(•̀_·́)╭∩╮',
+                    '♡ .ᐟ', '▄︻テ══━一', '⩇⩇:⩇⩇', '❗ ═══════ ᵎ!ᵎ',
+                    '⚔️ ⃠ ᯓ ✈︎', '▌ ▌', '⃤❤️⃤⃤♡ ⃣', '༝༚༝༚ ᯤ ⬜',
+                    '⋆˚࿔ ˚⋆', '⚡︎ ⋆.˚✮✮˚.⋆', '⚙️ ✉ ⌯⌲', 'ℳ ꧁ᬊᬁᴀɴɢᴇʟᬊ᭄꧂',
+                    'ശ്ദി(˵ •̀ ᴗ - ˵ )', '✧ *ੈ✩‧₊˚ ᯓ', 'Ɑ͞_ ̶͞__ ̶͞__ ̶͞ﻝﻝ', '⭐ ⤷ ゛ ˎˊ˗',
+                    '≽^•⩊•^≼', '♂️✈ ⚡ ᶻ ִֶָ. .. ࣪ ִֶָ་༘࿐', 'ৎ Bye♂️Bye', '❤️ ✍︎ ╾━╤デ╦︻(•⤙•)',
+                    '⊹ ࣪ ˖ ༼;´༎ຶ ༎ຶ༽', '❤︎ ᝰ.ᐟ ☕︎', 'ᡕᠵデᡁ᠊╾━', 'ฅ՞•ﻌ•՞ฅ ⋆ ████████',
+                    'ִ ࣪ ˖ ࣪ ᨰꫀᥣᥴ᥆ꩇꫀ !', 'ᰔ ִ ׄ ˙˙ ◯', '(づ｡◕‿‿◕｡)づ ️', '(╥﹏╥) ˚.༘⋆ ️',
+                    '⚰️ ──── ୨୧ ────', 'ᡕᠵデ气亠', 'ྀི ✨ ⨾ִ໋', '*ੈ✩‧₊˚༺☆༻*ੈ✩‧₊˚',
+                    'ׁ ׅ seuuser ! ׁ ׅ', '꒰ྀི১ ໒꒱ིྀ', '♱ ˚˖ִ໋˚ ⋆˙⟡', '❤︎ ⎛₎╰(☫)╯₍⎞',
+                    '️ ﹒ ｡ ₊°༺❤︎༻°₊ ｡ .', '݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁.', '⁺‧₊˚ ཐི⋆♱⋆ཋྀ', '˚₊‧⁺ ⋆｡˚ ☁︎ ˚｡⋆｡˚☽˚｡⋆',
+                    '♡ ♡ (°͜ʖ͡°)╭∩╮', 'Ი︵ >⩊<', '₍^. .^₎Ⳋ', '☔︎︎ ₍ᵔ.˛.ᵔ₎',
+                    '˙✧˖° ༘ ⋆｡°', '️ ⌞ ⌝', '( ͠° ͟ʖ ͡°) sussy?', '⸝⸝ ﹌﹌﹌﹌﹌ bu yüzden',
+                    '♡ ⋆｡‧˚ʚɞ˚‧｡⋆', '‧˚꒰୭ ˚. ᵎᵎ ⿻', 'ྀི♪⋆.✮ ┃', '✌︎︎ ⚜️ .☘︎ ݁˖',
+                    '૮₍ • ᴥ • ₎ა', 'MBUD صور اشخاص ❤️❤️❤️', 'خطوط ⭒˗ˏˋ ⚠ ˎˊ˗⭒', '️ ️ ❀ ˗ˏˋ ꒰ ✉︎ ꒱ ˎˊ˗',
+                    '﹕・stage〃・꒱', '⊹ ࣪ ˖ ໒꒱', '「 ✦ ✦ 」 ᵎᵎ ♥️', '‧₊˚♪ ₊˚⊹ ✉️',
+                    '˙✧˖°⋆｡˚ ꨄ︎', '↪️ ඞ ඞ ඞ ඞ ඞ ඞ', '♫ ( -_•)╦̵̵̿╤─', '✍️ ˙✧˖° ༘ ⋆｡˚',
+                    'ᥫ᭡. ╾━╤デ╦︻', '⭑.ᐟ ⌨ ꠹', '⠀ ⠀ ⠀ ⠀ ⠀ ⠀ ⠀ ⠀ ˑ', 'ꪀo͟o͟ ͡꒱ ۫ Ꭵ°᭄ᶫᵒᵛᵉᵧₒᵤ࿐',
+                    'Ɑ͞ ͞ ͞ ͞ ͞ ͞ ͞ ﻝﮞ', '⸜(｡˃ ᵕ ˂ )⸝♡', '™ ּ֯ . ❥ ּ֯', '┆꒰ ౿ .ᐟ ꒱ ⋆✴︎˚｡⋆ ⋆'
+                ]
+            },
+            // === رموز مشوشة (Glitch / Zalgo) ===
+            { category: 'رموز مشوشة', items: [
+                    'H̶̿̀͊̍̈́͑̓̈́̃̆́', 'Ɑ͞ ̶͞ ̶͞ ̶͞ لں͞', '̶͞_̶͞_̶͞_̶͞_̶͞_̶͞ﻝﻝ', '⃤⃟⃝',
+                    '⃤❤️⃤⃤♡', '⃤♡⃤⃤', '⃢⃢', '⃝️',
+                    '⃝', '̶͞', '͞ ͞ ͞ ͞', '҉',
+                    '҉ ҉ ҉', '̿̀͊̍̈́͑̓̈́̃̆́', '̶̿̀͊̍̈́͑̓̈́̃̆́', '̶̶̿̀͊̍̈́͑̓̈́̃̆́̿̀͊̍̈́͑̓̈́̃̆́',
+                    '͜', '͜ ͜', '͜ ͜ ͜', '̨̨̨',
+                    '̨̨̨̨̨', '̡̡̡', '̡̡̡̡̡', '̥̥̥',
+                    '̥̥̥̥̥', '̩̩̩', '̩̩̩̩̩', '̪̪̪',
+                    '̪̪̪̪̪', '̫̫̫', '̫̫̫̫̫', '̬̬̬',
+                    '̬̬̬̬̬', '̭̭̭', '̭̭̭̭̭', '̮̮̮',
+                    '̮̮̮̮̮', '̯̯̯', '̯̯̯̯̯', '̰̰̰',
+                    '̰̰̰̰̰', '̱̱̱', '̱̱̱̱̱', '̲̲̲',
+                    '̲̲̲̲̲', '̳̳̳', '̳̳̳̳̳', '̴̴̴',
+                    '̴̴̴̴̴', '̵̵̵', '̵̵̵̵̵', '̶̶̶',
+                    '̶̶̶̶̶', '̷̷̷', '̷̷̷̷̷', '̸̸̸',
+                    '̸̸̸̸̸', '̹̹̹', '̹̹̹̹̹', '̺̺̺',
+                    '̺̺̺̺̺', '̻̻̻', '̻̻̻̻̻', '̼̼̼',
+                    '̼̼̼̼̼', '̽̽̽', '̽̽̽̽̽', '̾̾̾',
+                    '̾̾̾̾̾', '̿̿̿', '̿̿̿̿̿', '̀̀̀',
+                    '̀̀̀̀̀', '́́́', '́́́́́', '͂͂͂',
+                    '͂͂͂͂͂', '̓̓̓', '̓̓̓̓̓', '̈́̈́̈́',
+                    '̈́̈́̈́̈́̈́', 'ͅͅͅ', 'ͅͅͅͅͅ', '͆͆͆',
+                    '͆͆͆͆͆', '͇͇͇', '͇͇͇͇͇', '͈͈͈',
+                    '͈͈͈͈͈', '͉͉͉', '͉͉͉͉͉', '͊͊͊',
+                    '͊͊͊͊͊', '͋͋͋', '͋͋͋͋͋', '͌͌͌',
+                    '͌͌͌͌͌', '͍͍͍', '͍͍͍͍͍', '͎͎͎',
+                    '͎͎͎͎͎', '͏͏͏', '͏͏͏͏͏', '͐͐͐',
+                    '͐͐͐͐͐', '͑͑͑', '͑͑͑͑͑', '͒͒͒',
+                    '͒͒͒͒͒', '͓͓͓', '͓͓͓͓͓', '͔͔͔',
+                    '͔͔͔͔͔', '͕͕͕', '͕͕͕͕͕', '͖͖͖',
+                    '͖͖͖͖͖', '͗͗͗', '͗͗͗͗͗', '͘͘͘',
+                    '͘͘͘͘͘', '͙͙͙', '͙͙͙͙͙', '͚͚͚',
+                    '͚͚͚͚͚', '͛͛͛', '͛͛͛͛͛'
+                ]
+            },
+            // === نصوص ملعونة (Cursed Text) ===
+            { category: 'نصوص ملعونة', items: [
+                    'Ɑ͞ ̶͞ ̶͞ ̶͞ لں͞', 'Ɑ͞_ ̶͞__ ̶͞__ ̶͞ﻝﻝ', 'Ɑ͞ ͞ ͞ ͞ ͞ ͞ ͞ ﻝﮞ', 'H̶̿̀͊̍̈́͑̓̈́̃̆́',
+                    'ก็็็็็็็็็็็็็็็็็', 'ก็็็็็็็็็็็็็', 'ก็็็็็็็็็็็็', '็็็็็็็็็็็็็',
+                    '⃝ ็็็็็็็็็็็็ ℒ ᥫ᭡. ˎˊ˗', '⃤⃟⃝ ็็็็็็็็็็็', '❌ ⋆｡‧₊°♱༺❦︎༻♱༉‧₊˚.', '▬▬ι══════ﺤ',
+                    '⃝️ ⃝️', '⌐╦ᡁ᠊╾━', '❓ ⁶♂️⁷', '⠀⃝ ⠀⃝ ⠀⃝ ⠀⃝ㅤ',
+                    'ΔΜØŇǤ ỮŞ ඞ', '. ⃤♡⃤⃤', '¯\_(ツ)_/¯', '( ͜ₒ ㅅ ͜ ₒ) . ⋮ ᥙℓᥱʂ .ᐟ',
+                    'ֹ ₊ ꒱ ( )', '☾ ﷽', 'ヽ༼ ʘ̚ل͜ʘ̚༽ﾉ', '˗ˏˋ ˎˊ˗',
+                    'ശ്ദി(ᵔᗜᵔ)', '❤️❤️❤️❤️❤️❤️', '│ ⓘ ≽^• ˕ • ྀི≼', '️ ݁ ˖Ი⋆',
+                    '✅ ⊹₊˚‧︵‿₊୨ᰔ୧₊‿︵‧˚₊⊹', '՞ ܸ.ˬ.ܸ՞', '✰ ╭∩╮(•̀_·́)╭∩╮', '♡ .ᐟ',
+                    '▄︻テ══━一', '⩇⩇:⩇⩇', '❗ ═══════ ᵎ!ᵎ', '⚔️ ⃠ ᯓ ✈︎',
+                    '▌ ▌', '⃤❤️⃤⃤♡ ⃣', '༝༚༝༚ ᯤ ⬜', '⋆˚࿔ ˚⋆',
+                    '⚡︎ ⋆.˚✮✮˚.⋆', '⚙️ ✉ ⌯⌲', 'ℳ ꧁ᬊᬁᴀɴɢᴇʟᬊ᭄꧂', 'ശ്ദി(˵ •̀ ᴗ - ˵ )',
+                    '✧ *ੈ✩‧₊˚ ᯓ', 'Ɑ͞_ ̶͞__ ̶͞__ ̶͞ﻝﻝ', '⭐ ⤷ ゛ ˎˊ˗', '≽^•⩊•^≼',
+                    '♂️✈ ⚡ ᶻ ִֶָ. .. ࣪ ִֶָ་༘࿐', 'ৎ Bye♂️Bye', '❤️ ✍︎ ╾━╤デ╦︻(•⤙•)', '⊹ ࣪ ˖ ༼;´༎ຶ ༎ຶ༽',
+                    '❤︎ ᝰ.ᐟ ☕︎', 'ᡕᠵデᡁ᠊╾━', 'ฅ՞•ﻌ•՞ฅ ⋆ ████████', 'ִ ࣪ ˖ ࣪ ᨰꫀᥣᥴ᥆ꩇꫀ !',
+                    'ᰔ ִ ׄ ˙˙ ◯', '(づ｡◕‿‿◕｡)づ ️', '(╥﹏╥) ˚.༘⋆ ️', '⚰️ ──── ୨୧ ────',
+                    'ᡕᠵデ气亠', 'ྀི ✨ ⨾ִ໋', '*ੈ✩‧₊˚༺☆༻*ੈ✩‧₊˚', 'ׁ ׅ seuuser ! ׁ ׅ',
+                    '꒰ྀི১ ໒꒱ིྀ', '♱ ˚˖ִ໋˚ ⋆˙⟡', '❤︎ ⎛₎╰(☫)╯₍⎞', '️ ﹒ ｡ ₊°༺❤︎༻°₊ ｡ .',
+                    '݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁.', '⁺‧₊˚ ཐི⋆♱⋆ཋྀ', '˚₊‧⁺ ⋆｡˚ ☁︎ ˚｡⋆｡˚☽˚｡⋆', '♡ ♡ (°͜ʖ͡°)╭∩╮',
+                    'Ი︵ >⩊<', '₍^. .^₎Ⳋ', '☔︎︎ ₍ᵔ.˛.ᵔ₎', '˙✧˖° ༘ ⋆｡°',
+                    '️ ⌞ ⌝', '( ͠° ͟ʖ ͡°) sussy?', '⸝⸝ ﹌﹌﹌﹌﹌ bu yüzden', '♡ ⋆｡‧˚ʚɞ˚‧｡⋆',
+                    '‧˚꒰୭ ˚. ᵎᵎ ⿻', 'ྀི♪⋆.✮ ┃', '✌︎︎ ⚜️ .☘︎ ݁˖', '૮₍ • ᴥ • ₎ა',
+                    'MBUD صور اشخاص ❤️❤️❤️', 'خطوط ⭒˗ˏˋ ⚠ ˎˊ˗⭒', '️ ️ ❀ ˗ˏˋ ꒰ ✉︎ ꒱ ˎˊ˗', '﹕・stage〃・꒱',
+                    '⊹ ࣪ ˖ ໒꒱', '「 ✦ ✦ 」 ᵎᵎ ♥️', '‧₊˚♪ ₊˚⊹ ✉️', '˙✧˖°⋆｡˚ ꨄ︎',
+                    '↪️ ඞ ඞ ඞ ඞ ඞ ඞ', '♫ ( -_•)╦̵̵̿╤─', '✍️ ˙✧˖° ༘ ⋆｡˚', 'ᥫ᭡. ╾━╤デ╦︻',
+                    '⭑.ᐟ ⌨ ꠹', '⠀ ⠀ ⠀ ⠀ ⠀ ⠀ ⠀ ⠀ ˑ', 'ꪀo͟o͟ ͡꒱ ۫ Ꭵ°᭄ᶫᵒᵛᵉᵧₒᵤ࿐', 'Ɑ͞ ͞ ͞ ͞ ͞ ͞ ͞ ﻝﮞ',
+                    '⸜(｡˃ ᵕ ˂ )⸝♡', '™ ּ֯ . ❥ ּ֯', '┆꒰ ౿ .ᐟ ꒱ ⋆✴︎˚｡⋆ ⋆'
+                ]
+            },
+            // === تركيبات فوضوية ===
+            { category: 'تركيبات فوضوية', items: [
+                    '▶︎ •၊၊||၊|။||||။၊|• 0:10', '⚠️ ก็็็็็็็็็็็็็็็็็ ⛔ ▓▓▓▓▓▓ ▄︻デ══━一', '（ ͜.人 ͜.） ก็็็็็็็็็็็็็็็็็็็ εつ▄█▀█●',
+                    '⃢⃢ ඞyou are gඞy ╾━╤デ╦︻ඞා ็็็็็็็็็็็็็ ⫘⫘⫘⫘⫘⫘', 'ㅤㅤㅤㅤㅤㅤㅤ （ ͜.人 ͜.） ☥ ♥️⃢⃢♥️⃢♥️⃢ ⊹ ࣪ ﹏﹏﹏⊹ ࣪ ˖',
+                    '▶︎ •၊၊||၊|။||||။၊|• 0:10 ️ ⚠️ ก็็็็็็็็็็็็็็็็็ ⛔ ▓▓▓▓▓▓ ▄︻デ══━一', '（ ͜.人 ͜.） ก็็็็็็็็็็็็็็็็็็็ εつ▄█▀█● ⃢⃢ ඞyou are gඞy',
+                    '╾━╤デ╦︻ඞා ็็็็็็็็็็็็็ ⫘⫘⫘⫘⫘⫘ ㅤㅤㅤㅤㅤㅤㅤ （ ͜.人 ͜.） ☥ ♥️⃢⃢♥️⃢♥️⃢', '⊹ ࣪ ﹏﹏﹏⊹ ࣪ ˖ ▶︎ •၊၊||၊|။||||။၊|• 0:10 ️ ⚠️ ก็็็็็็็็็็็็็็็็็',
+                    '⛔ ▓▓▓▓▓▓ ▄︻デ══━一 （ ͜.人 ͜.） ก็็็็็็็็็็็็็็็็็็็ εつ▄█▀█● ⃢⃢ ඞyou are gඞy', '╾━╤デ╦︻ඞා ็็็็็็็็็็็็็ ⫘⫘⫘⫘⫘⫘ ㅤㅤㅤㅤㅤㅤㅤ （ ͜.人 ͜.）',
+                    '☥ ♥️⃢⃢♥️⃢♥️⃢ ⊹ ࣪ ﹏﹏﹏⊹ ࣪ ˖ ▶︎ •၊၊||၊|။||||။၊|• 0:10', '️ ⚠️ ก็็็็็็็็็็็็็็็็็ ⛔ ▓▓▓▓▓▓ ▄︻デ══━一 （ ͜.人 ͜.）',
+                    'ก็็็็็็็็็็็็็็็็็็็ εつ▄█▀█● ⃢⃢ ඞyou are gඞy ╾━╤デ╦︻ඞා', '็็็็็็็็็็็็็ ⫘⫘⫘⫘⫘⫘ ㅤㅤㅤㅤㅤㅤㅤ （ ͜.人 ͜.） ☥ ♥️⃢⃢♥️⃢♥️⃢',
+                    '⊹ ࣪ ﹏﹏﹏⊹ ࣪ ˖ ▶︎ •၊၊||၊|။||||။၊|• 0:10 ️ ⚠️ ก็็็็็็็็็็็็็็็็็ ⛔ ▓▓▓▓▓▓', '▄︻デ══━一 （ ͜.人 ͜.） ก็็็็็็็็็็็็็็็็็็็ εつ▄█▀█● ⃢⃢ ඞyou are gඞy',
+                    '╾━╤デ╦︻ඞා ็็็็็็็็็็็็็ ⫘⫘⫘⫘⫘⫘ ㅤㅤㅤㅤㅤㅤㅤ （ ͜.人 ͜.） ☥ ♥️⃢⃢♥️⃢♥️⃢ ⊹ ࣪ ﹏﹏﹏⊹ ࣪ ˖', '⎛⎝ ≽ > ⩊ < ≼ ⎠⎞ ก็็็็็็็็็็็็ ☑️Certified Gay ₍^. .^₎⟆ I know your ~ P DIDDY',
+                    '꧁⎝ ༺✧༻ ⎠꧂ 9/11 ✋ ᥫ᭡.ִֶָ ﮩ٨ـﮩﮩ٨ـ♡ﮩ٨ـﮩﮩ٨ـ ❤️ (‿ˠ‿)', 'Ɑ͞ ̶͞ ̶͞ ̶͞ لں͞ ╾━╤デ╦︻(•_- ) ☆. .☆ ‿ ✎﹏﹏﹏﹏',
+                    '˚˖ִ໋❀ ूाीू ᶠᶸᶜᵏᵧₒᵤ! ☚⍢⃝☚ °❀⋆.ೃ࿔*:･ ⚠︎ ﷲ﷽', '⋆.˚ ⋆.˚ ✌︎㋡ ⎛⎝ ≽ > ⩊ < ≼ ⎠⎞ ( ° ͜ʖ͡°)╭∩╮',
+                    'Ɑ͞ ̶͞ ̶͞ ̶͞ لں͞ ️ ྀི❤︎ྀི ꧁ঔৣ☬✞ART✞☬ঔৣ꧂ ▶• ılıılıılıılıılıılı। 0', 'ㅤ♡ྀི ᅠ ᅠ ᅠ ᅠ ᅠ ᅠ ඞ sussybAkA ඞ εつ▄█▀█ ● ⚞^. .^⚟',
+                    'ʕ•ﻌ•ʔ ╰┈➤ Ɑ͞ ̶͞ ̶͞ ̶͞ ̶͞ لﮞ͞ H̶̿̀͊̍̈́͑̓̈́̃̆́ ⋆˚꩜｡', '️stein island ────୨ৎ──── ▄︻デ══━一 ก็็็็็็็็็็็็ જ⁀➴',
+                    '⎛⎝( ` ᢍ ´ )⎠⎞ᵐᵘʰᵃʰᵃ ୧⍤⃝ ╾━╤デ╦︻ඞා ≽(◉˕ ◉ ≼マ', '-ˋˏ✄┈┈┈┈ ➤ ⃝ ﷽ ✮⋆˙ -ूाीू ⋆༺☠︎︎༻⋆ ⚫█▀█▄▄',
+                    '(☞ ͡° ͜ʖ ͡°)☞ ⃤⃟⃝ ็็็็็็็็็็็ ❌ ⋆｡‧₊°♱༺❦︎༻♱༉‧₊˚.', '▬▬ι══════ﺤ ⃝ ็็็็็็็็็็็็ ℒ ᥫ᭡. ˎˊ˗ ⃝️ ⃝️',
+                    '°❀⋆.ೃ࿔*:･°❀⋆.ೃ࿔*:･ ⌐╦ᡁ᠊╾━ ❓ ⁶♂️⁷ ⠀⃝ ⠀⃝ ⠀⃝ ⠀⃝ㅤ', 'ΔΜØŇǤ ỮŞ ඞ . ⃤♡⃤⃤ ¯\_(ツ)_/¯ ( ͜ₒ ㅅ ͜ ₒ) . ⋮ ᥙℓᥱʂ .ᐟ',
+                    'ֹ ₊ ꒱ ( ) ☾ ﷽ ヽ༼ ʘ̚ل͜ʘ̚༽ﾉ ˗ˏˋ ˎˊ˗ ശ്ദി(ᵔᗜᵔ)', '❤️❤️❤️❤️❤️❤️ │ ⓘ ≽^• ˕ • ྀི≼ ️ ݁ ˖Ი⋆ ✅',
+                    '⊹₊˚‧︵‿₊୨ᰔ୧₊‿︵‧˚₊⊹ ՞ ܸ.ˬ.ܸ՞ ✰ ╭∩╮(•̀_·́)╭∩╮ ♡ .ᐟ', '▄︻テ══━一 ⩇⩇:⩇⩇ ❗ ═══════ ᵎ!ᵎ ⚔️ ⃠ ᯓ ✈︎',
+                    '▌ ▌ ⃤❤️⃤⃤♡ ⃣ ༝༚༝༚ ᯤ ⬜ ⋆˚࿔ ˚⋆ ⚡︎ ⋆.˚✮✮˚.⋆', '⚙️ ✉ ⌯⌲ ℳ ꧁ᬊᬁᴀɴɢᴇʟᬊ᭄꧂ ശ്ദി(˵ •̀ ᴗ - ˵ ) ✧ *ੈ✩‧₊˚ ᯓ',
+                    'Ɑ͞_ ̶͞__ ̶͞__ ̶͞ﻝﻝ ⭐ ⤷ ゛ ˎˊ˗ ≽^•⩊•^≼ ♂️✈ ⚡ ᶻ ִֶָ. .. ࣪ ִֶָ་༘࿐', 'ৎ Bye♂️Bye ❤️ ✍︎ ╾━╤デ╦︻(•⤙•) ⊹ ࣪ ˖ ༼;´༎ຶ ༎ຶ༽ ❤︎',
+                    'ᝰ.ᐟ ☕︎ ᡕᠵデᡁ᠊╾━ ฅ՞•ﻌ•՞ฅ ⋆ ████████ ִ ࣪ ˖ ࣪ ᨰꫀᥣᥴ᥆ꩇꫀ !', 'ᰔ ִ ׄ ˙˙ ◯ (づ｡◕‿‿◕｡)づ ️ (╥﹏╥) ˚.༘⋆ ️ ⚰️ ──── ୨୧ ────',
+                    'ᡕᠵデ气亠 ྀི ✨ ⨾ִ໋ *ੈ✩‧₊˚༺☆༻*ੈ✩‧₊˚ ׁ ׅ seuuser ! ׁ ׅ', '꒰ྀི১ ໒꒱ིྀ ♱ ˚˖ִ໋˚ ⋆˙⟡ ❤︎ ⎛₎╰(☫)╯₍⎞',
+                    '️ ﹒ ｡ ₊°༺❤︎༻°₊ ｡ . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁. ⁺‧₊˚', 'ཐི⋆♱⋆ཋྀ ˚₊‧⁺ ⋆｡˚ ☁︎ ˚｡⋆｡˚☽˚｡⋆ ♡ ♡ (°͜ʖ͡°)╭∩╮',
+                    'Ი︵ >⩊< ₍^. .^₎Ⳋ ☔︎︎ ₍ᵔ.˛.ᵔ₎ ˙✧˖° ༘ ⋆｡° ️ ⌞ ⌝', '( ͠° ͟ʖ ͡°) sussy? ⸝⸝ ﹌﹌﹌﹌﹌ bu yüzden ♡ ⋆｡‧˚ʚɞ˚‧｡⋆',
+                    '‧˚꒰୭ ˚. ᵎᵎ ⿻ ྀི♪⋆.✮ ┃ ✌︎︎ ⚜️ .☘︎ ݁˖ ૮₍ • ᴥ • ₎ა', 'MBUD صور اشخاص ❤️❤️❤️ خطوط ⭒˗ˏˋ ⚠ ˎˊ˗⭒ ️ ️ ❀',
+                    '˗ˏˋ ꒰ ✉︎ ꒱ ˎˊ˗ ﹕・stage〃・꒱ ⊹ ࣪ ˖ ໒꒱ 「 ✦ ✦ 」 ᵎᵎ ♥️', '‧₊˚♪ ₊˚⊹ ✉️ ˙✧˖°⋆｡˚ ꨄ︎ ↪️ ඞ ඞ ඞ ඞ ඞ ඞ',
+                    '♫ ( -_•)╦̵̵̿╤─ ✍️ ˙✧˖° ༘ ⋆｡˚ ᥫ᭡. ╾━╤デ╦︻ ⭑.ᐟ ⌨ ꠹', '⠀ ⠀ ⠀ ⠀ ⠀ ⠀ ⠀ ⠀ ˑ ꪀo͟o͟ ͡꒱ ۫ Ꭵ°᭄ᶫᵒᵛᵉᵧₒᵤ࿐',
+                    'Ɑ͞ ͞ ͞ ͞ ͞ ͞ ͞ ﻝﮞ ⸜(｡˃ ᵕ ˂ )⸝♡ ™ ּ֯ . ❥ ּ֯', '┆꒰ ౿ .ᐟ ꒱ ⋆✴︎˚｡⋆ ⋆ Free AI Art Generator - AI Chat (No Sign-Up) - AI Story Generator Privacy'
+                ]
+            },
+            // === رموز إضافية من المصادر ===
+            { category: 'رموز إضافية', items: [
+                    '⋆ ˚ ✧ ˖ ° ✦ ✧ ˚ ｡⋆', '☁ ☂ ☃ ☄ ☀ ☼ ☽ ☾ ⛅', '♡ ♥ ❥ ❦ ❧ ᥫ᭡', '✿ ❀ ✾ ❃',
+                    '꒰ ꒱ ﹙ ﹚ ［］｛｝', '· • ⋅ ∙ ─ ─ ─ ~~~', '☽ ☾ ✦ ⚝ ☀ ⭐', '⋆ ˚｡⋆',
+                    '✧ soft vibes ✧', '˖ magic ˖', '° ᐢ.ᐟ °', '✦ aesthetic ✦',
+                    '☁ head in clouds', 'daydreaming ☽', '☀ sunny soul', '☁ soft heart',
+                    '♡ kind heart', 'made with love ♥', '❥ sweet soul', 'ᥫ᭡ peaceful',
+                    '☽ night soul ☾', 'stargazer ✦', 'lunar', 'celestial being ✧',
+                    '✿ nature child', '❀ wildflower', 'growing', 'blooming',
+                    '꒰ aesthetic ꒱', '﹙ soft ﹚', '［ dreamy ］', '｛ gentle ｝',
+                    'she/her · creator', 'less · is · more', 'coffee · music ·', '─── always ───',
+                    '✧ ✦ ★', '→ ⇒ ➜', '◈ ◇ ◆', '░ ▒ ▓ █',
+                    '┌───┐', '│', '└───┘', '╔═══╗',
+                    '╚═══╝', '████', '░░▒▓', '─── ⋆⋅☆⋅⋆ ───',
+                    '╔═╗', '༄', 'ᯓ', '⸝⸝',
+                    '﹌﹌﹌﹌﹌', 'ᝰ.ᐟ', '₊˚⊹', '✮',
+                    '♱', '˚˖ִ໋', '⋆˙⟡', '𖤐',
+                    'ꨄ', '𐙚', 'ෆ', 'დ',
+                    'ᰔ', '꩜', 'ᩚ', '⌁',
+                    '⌇', '⟡', '⊹', '⚝',
+                    '☬', '⚚', '⛧', '🕷',
+                    '🦇', '⛓', '☣', '⚰',
+                    '🖤', '🗡', '୨ৎ', 'ʚɞ',
+                    'ʚ♡ɞ', '⋆.˚', 'ੈ♡˳', 'ꔫ',
+                    '₊˚⊹♡', '૮₍ ˶ᵔ ᵕ ᵔ˶ ₎ა', 'ʕ•ᴥ•ʔ', 'ᓚ₍ ^. .^₎',
+                    '◆', '◇', '○', '●',
+                    '◈', '◉', '▲', '△',
+                    '▼', '▽', '■', '□',
+                    '⬟', '⬢', '⬡', '◊',
+                    '⟐', '◌', '◍', '◎',
+                    '〆', '乂', 'メ', '么',
+                    '々', 'ツ', '亗', '彡',
+                    '꧁༒꧂', '乂〆', 'メ亗', '★彡',
+                    '꧁', '꧂', '────────', '━━━━━━',
+                    '┈┈┈┈┈', '⋆｡°✩°｡⋆', '• ───── •', '━━━✦━━━',
+                    '────୨ৎ────', '═━─━─═', '┉┉┉┉┉', '╰┈➤',
+                    '⟡────────⟡', '꧁ نص ꧂', '『 نص 』', '【 نص 】',
+                    '《 نص 》', '〈 نص 〉', '〔 نص 〕', '༺ نص ༻',
+                    '𓆩 نص 𓆪', '꒰ نص ꒱', '✦ نص ✦', '★ نص ★',
+                    '♛ نص ♛', '☾ نص ☽', '༒ نص ༒', '❖ نص ❖',
+                    '⟦ نص ⟧'
+                ]
+            }
+        ];
+
+        // ============================================================
+        //  DATA: LIBRARY (المكتبة الأساسية مع بعض الرموز الإضافية)
+        // ============================================================
+        const LIB = [
+            ["قلوب", "♡"],
+            ["قلوب", "♥"],
+            ["قلوب", "❤"],
+            ["قلوب", "❥"],
+            ["قلوب", "ღ"],
+            ["قلوب", "ᥫ᭡"],
+            ["قلوب", "ꨄ"],
+            ["قلوب", "𐙚"],
+            ["قلوب", "❣"],
+            ["قلوب", "❦"],
+            ["قلوب", "❧"],
+            ["قلوب", "ෆ"],
+            ["قلوب", "დ"],
+            ["قلوب", "ᰔ"],
+            ["قلوب", "꩜"],
+            ["قلوب", "ᩚ"],
+            ["نجوم", "★"],
+            ["نجوم", "☆"],
+            ["نجوم", "✦"],
+            ["نجوم", "✧"],
+            ["نجوم", "✩"],
+            ["نجوم", "✪"],
+            ["نجوم", "✫"],
+            ["نجوم", "✬"],
+            ["نجوم", "✭"],
+            ["نجوم", "✮"],
+            ["نجوم", "✯"],
+            ["نجوم", "✰"],
+            ["نجوم", "⋆"],
+            ["نجوم", "⭒"],
+            ["نجوم", "✵"],
+            ["نجوم", "✶"],
+            ["نجوم", "✷"],
+            ["نجوم", "✸"],
+            ["نجوم", "✹"],
+            ["نجوم", "✺"],
+            ["نجوم", "✻"],
+            ["نجوم", "✼"],
+            ["أسهم", "→"],
+            ["أسهم", "←"],
+            ["أسهم", "↑"],
+            ["أسهم", "↓"],
+            ["أسهم", "↔"],
+            ["أسهم", "➜"],
+            ["أسهم", "➤"],
+            ["أسهم", "➳"],
+            ["أسهم", "➥"],
+            ["أسهم", "➟"],
+            ["أسهم", "➠"],
+            ["أسهم", "➺"],
+            ["أسهم", "➻"],
+            ["أسهم", "➼"],
+            ["أسهم", "↝"],
+            ["أسهم", "↠"],
+            ["أسهم", "⇢"],
+            ["أسهم", "⇠"],
+            ["أسهم", "⟶"],
+            ["أسهم", "⟵"],
+            ["أسهم", "➞"],
+            ["أسهم", "➣"],
+            ["رموز", "〆"],
+            ["رموز", "々"],
+            ["رموز", "乂"],
+            ["رموز", "メ"],
+            ["رموز", "么"],
+            ["رموز", "〄"],
+            ["رموز", "𖤐"],
+            ["رموز", "༒"],
+            ["رموز", "†"],
+            ["رموز", "۝"],
+            ["رموز", "〤"],
+            ["رموز", "𓂀"],
+            ["رموز", "𖣘"],
+            ["رموز", "☬"],
+            ["رموز", "⚚"],
+            ["رموز", "⚝"],
+            ["رموز", "⌁"],
+            ["رموز", "⌇"],
+            ["رموز", "⟡"],
+            ["رموز", "⊹"],
+            ["رموز", "𖦹"],
+            ["تيجان", "♛"],
+            ["تيجان", "♕"],
+            ["تيجان", "♔"],
+            ["تيجان", "👑"],
+            ["تيجان", "♚"],
+            ["تيجان", "♝"],
+            ["تيجان", "♜"],
+            ["تيجان", "♞"],
+            ["تيجان", "♟"],
+            ["دارك", "☠"],
+            ["دارك", "☾"],
+            ["دارك", "🕷"],
+            ["دارك", "🦇"],
+            ["دارك", "⛓"],
+            ["دارك", "☣"],
+            ["دارك", "⚰"],
+            ["دارك", "🖤"],
+            ["دارك", "🗡"],
+            ["كيوت", "୨ৎ"],
+            ["كيوت", "꒰ა"],
+            ["كيوت", "໒꒱"],
+            ["كيوت", "ʚɞ"],
+            ["كيوت", "ʚ♡ɞ"],
+            ["كيوت", "⋆.˚"],
+            ["كيوت", "ੈ♡˳"],
+            ["كيوت", "ꔫ"],
+            ["كيوت", "₊˚⊹♡"],
+            ["كيوت", "૮₍ ˶ᵔ ᵕ ᵔ˶ ₎ა"],
+            ["كيوت", "ʕ•ᴥ•ʔ"],
+            ["كيوت", "ᓚ₍ ^. .^₎"],
+            ["هندسية", "◆"],
+            ["هندسية", "◇"],
+            ["هندسية", "○"],
+            ["هندسية", "●"],
+            ["هندسية", "◈"],
+            ["هندسية", "◉"],
+            ["هندسية", "▲"],
+            ["هندسية", "△"],
+            ["هندسية", "▼"],
+            ["هندسية", "▽"],
+            ["هندسية", "■"],
+            ["هندسية", "□"],
+            ["هندسية", "⬟"],
+            ["هندسية", "⬢"],
+            ["هندسية", "⬡"],
+            ["هندسية", "◊"],
+            ["هندسية", "⟐"],
+            ["هندسية", "◌"],
+            ["هندسية", "◍"],
+            ["هندسية", "◎"],
+            ["ألعاب", "〆"],
+            ["ألعاب", "乂"],
+            ["ألعاب", "メ"],
+            ["ألعاب", "么"],
+            ["ألعاب", "ツ"],
+            ["ألعاب", "亗"],
+            ["ألعاب", "彡"],
+            ["ألعاب", "꧁༒꧂"],
+            ["ألعاب", "乂〆"],
+            ["ألعاب", "メ亗"],
+            ["ألعاب", "★彡"],
+            ["ألعاب", "꧁"],
+            ["ألعاب", "꧂"],
+            ["فواصل", "────────"],
+            ["فواصل", "━━━━━━"],
+            ["فواصل", "┈┈┈┈┈"],
+            ["فواصل", "⋆｡°✩°｡⋆"],
+            ["فواصل", "• ───── •"],
+            ["فواصل", "━━━✦━━━"],
+            ["فواصل", "────୨ৎ────"],
+            ["فواصل", "═━─━─═"],
+            ["فواصل", "┉┉┉┉┉"],
+            ["فواصل", "╰┈➤"],
+            ["فواصل", "⟡────────⟡"],
+            ["إطارات", "꧁ نص ꧂"],
+            ["إطارات", "『 نص 』"],
+            ["إطارات", "【 نص 】"],
+            ["إطارات", "《 نص 》"],
+            ["إطارات", "〈 نص 〉"],
+            ["إطارات", "〔 نص 〕"],
+            ["إطارات", "༺ نص ༻"],
+            ["إطارات", "𓆩 نص 𓆪"],
+            ["إطارات", "꒰ نص ꒱"],
+            ["إطارات", "✦ نص ✦"],
+            ["إطارات", "★ نص ★"],
+            ["إطارات", "♛ نص ♛"],
+            ["إطارات", "☾ نص ☽"],
+            ["إطارات", "༒ نص ༒"],
+            ["إطارات", "❖ نص ❖"],
+            ["إطارات", "⟦ نص ⟧"]
+        ];
+
+        // ============================================================
+        //  FRAMES
+        // ============================================================
+        const FRAMES = [
+            "꧁ {T} ꧂", "★꧁ {T} ꧂★", "✦꧁ {T} ꧂✦", "♡꧁ {T} ꧂♡",
+            "♛꧁ {T} ꧂♛", "𖤐꧁ {T} ꧂𖤐", "『 {T} 』", "★『 {T} 』★",
+            "✦『 {T} 』✦", "♡『 {T} 』♡", "♛『 {T} 』♛", "𖤐『 {T} 』𖤐",
+            "【 {T} 】", "★【 {T} 】★", "✦【 {T} 】✦", "♡【 {T} 】♡",
+            "♛【 {T} 】♛", "𖤐【 {T} 】𖤐", "《 {T} 》", "★《 {T} 》★",
+            "✦《 {T} 》✦", "♡《 {T} 》♡", "♛《 {T} 》♛", "𖤐《 {T} 》𖤐",
+            "〈 {T} 〉", "★〈 {T} 〉★", "✦〈 {T} 〉✦", "♡〈 {T} 〉♡",
+            "♛〈 {T} 〉♛", "𖤐〈 {T} 〉𖤐", "〔 {T} 〕", "★〔 {T} 〕★",
+            "✦〔 {T} 〕✦", "♡〔 {T} 〕♡", "♛〔 {T} 〕♛", "𖤐〔 {T} 〕𖤐",
+            "༺ {T} ༻", "★༺ {T} ༻★", "✦༺ {T} ༻✦", "♡༺ {T} ༻♡",
+            "♛༺ {T} ༻♛", "𖤐༺ {T} ༻𖤐", "𓆩 {T} 𓆪", "★𓆩 {T} 𓆪★",
+            "✦𓆩 {T} 𓆪✦", "♡𓆩 {T} 𓆪♡", "♛𓆩 {T} 𓆪♛", "𖤐𓆩 {T} 𓆪𖤐",
+            "꒰ {T} ꒱", "★꒰ {T} ꒱★", "✦꒰ {T} ꒱✦", "♡꒰ {T} ꒱♡",
+            "♛꒰ {T} ꒱♛", "𖤐꒰ {T} ꒱𖤐", "✦ {T} ✦", "★✦ {T} ✦★",
+            "✦✦ {T} ✦✦", "♡✦ {T} ✦♡", "♛✦ {T} ✦♛", "𖤐✦ {T} ✦𖤐",
+            "★ {T} ★", "★★ {T} ★★", "✦★ {T} ★✦", "♡★ {T} ★♡",
+            "♛★ {T} ★♛", "𖤐★ {T} ★𖤐", "♛ {T} ♛", "★♛ {T} ♛★",
+            "✦♛ {T} ♛✦", "♡♛ {T} ♛♡", "♛♛ {T} ♛♛", "𖤐♛ {T} ♛𖤐",
+            "☾ {T} ☽", "★☾ {T} ☽★", "✦☾ {T} ☽✦", "♡☾ {T} ☽♡",
+            "♛☾ {T} ☽♛", "𖤐☾ {T} ☽𖤐", "༒ {T} ༒", "★༒ {T} ༒★",
+            "✦༒ {T} ༒✦", "♡༒ {T} ༒♡", "♛༒ {T} ༒♛", "𖤐༒ {T} ༒𖤐",
+            "❖ {T} ❖", "★❖ {T} ❖★", "✦❖ {T} ❖✦", "♡❖ {T} ❖♡",
+            "♛❖ {T} ❖♛", "𖤐❖ {T} ❖𖤐", "⟦ {T} ⟧", "★⟦ {T} ⟧★",
+            "✦⟦ {T} ⟧✦", "♡⟦ {T} ⟧♡", "♛⟦ {T} ⟧♛", "𖤐⟦ {T} ⟧𖤐",
+            "╔ {T} ╗", "★╔ {T} ╗★", "✦╔ {T} ╗✦", "♡╔ {T} ╗♡",
+            "♛╔ {T} ╗♛", "𖤐╔ {T} ╗𖤐", "╚ {T} ╝", "★╚ {T} ╝★",
+            "✦╚ {T} ╝✦", "♡╚ {T} ╝♡", "♛╚ {T} ╝♛", "𖤐╚ {T} ╝𖤐",
+            "┏ {T} ┓", "★┏ {T} ┓★", "✦┏ {T} ┓✦", "♡┏ {T} ┓♡",
+            "♛┏ {T} ┓♛", "𖤐┏ {T} ┓𖤐", "┗ {T} ┛", "★┗ {T} ┛★",
+            "✦┗ {T} ┛✦", "♡┗ {T} ┛♡", "♛┗ {T} ┛♛", "𖤐┗ {T} ┛𖤐",
+            "╭ {T} ╮", "★╭ {T} ╮★", "✦╭ {T} ╮✦", "♡╭ {T} ╮♡",
+            "♛╭ {T} ╮♛", "𖤐╭ {T} ╮𖤐", "╰ {T} ╯", "★╰ {T} ╯★",
+            "✦╰ {T} ╯✦", "♡╰ {T} ╯♡", "♛╰ {T} ╯♛", "𖤐╰ {T} ╯𖤐",
+            "⫷ {T} ⫸", "★⫷ {T} ⫸★", "✦⫷ {T} ⫸✦", "♡⫷ {T} ⫸♡",
+            "♛⫷ {T} ⫸♛", "𖤐⫷ {T} ⫸𖤐", "⟬ {T} ⟭", "★⟬ {T} ⟭★",
+            "✦⟬ {T} ⟭✦", "♡⟬ {T} ⟭♡", "♛⟬ {T} ⟭♛", "𖤐⟬ {T} ⟭𖤐",
+            "⸜ {T} ⸝", "★⸜ {T} ⸝★", "✦⸜ {T} ⸝✦", "♡⸜ {T} ⸝♡",
+            "♛⸜ {T} ⸝♛", "𖤐⸜ {T} ⸝𖤐", "༄ {T} ༄", "★༄ {T} ༄★",
+            "✦༄ {T} ༄✦", "♡༄ {T} ༄♡", "♛༄ {T} ༄♛", "𖤐༄ {T} ༄𖤐"
+        ];
+
+        // ============================================================
+        //  HELPERS
+        // ============================================================
+        const $ = id => document.getElementById(id);
+        let selectedCategory = 'الكل',
+            selectedText = '',
+            socialResult = '',
+            platform = 'WhatsApp',
+            formatIndex = 0;
+
+        function safeGet(key) {
+            try { return JSON.parse(localStorage.getItem(key) || '[]') } catch (e) { return [] }
+        }
+
+        function safeSet(key, val) {
+            try { localStorage.setItem(key, JSON.stringify(val)) } catch (e) { toast('تعذر الحفظ محلياً') }
+        }
+
+        function toast(msg) {
+            const el = $('toast');
+            el.textContent = msg;
+            el.classList.add('show');
+            clearTimeout(el._timer);
+            el._timer = setTimeout(() => el.classList.remove('show'), 2000);
+        }
+
+        function toggleMenu() { $('side').classList.toggle('open') }
+
+        function go(id, btn) {
+            document.querySelectorAll('.page').forEach(x => x.classList.remove('on'));
+            const target = $(id);
+            if (target) target.classList.add('on');
+            document.querySelectorAll('.nav').forEach(x => x.classList.remove('on'));
+            const activeBtn = btn || [...document.querySelectorAll('.nav')].find(x => (x.getAttribute('onclick') || '').includes(`go('${id}'`));
+            if (activeBtn) activeBtn.classList.add('on');
+            $('side').classList.remove('open');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function normalizeArabic(s) {
+            return String(s || '').toLowerCase()
+                .replace(/[أإآٱ]/g, 'ا')
+                .replace(/ة/g, 'ه')
+                .replace(/ى/g, 'ي')
+                .replace(/ئ/g, 'ي')
+                .replace(/ؤ/g, 'و')
+                .replace(/ء/g, '');
+        }
+
+        async function copyText(text) {
+            if (!text) return;
+            try {
+                if (navigator.clipboard && window.isSecureContext) {
+                    await navigator.clipboard.writeText(text);
+                } else {
+                    throw new Error('fallback');
+                }
+            } catch (_) {
+                const ta = document.createElement('textarea');
+                ta.value = text;
+                ta.style.cssText = 'position:fixed;opacity:0;left:-9999px;top:-9999px';
+                document.body.appendChild(ta);
+                ta.focus();
+                ta.select();
+                document.execCommand('copy');
+                ta.remove();
+            }
+            let h = safeGet('fazar_history').filter(x => x !== text);
+            h.unshift(text);
+            safeSet('fazar_history', h.slice(0, 200));
+            if ($('history')?.classList.contains('on')) showSaved('history');
+            toast('✅ تم النسخ');
+        }
+
+        function saveFav(t) {
+            if (!t) return;
+            let a = safeGet('fazar_favorites');
+            if (!a.includes(t)) {
+                a.unshift(t);
+                safeSet('fazar_favorites', a);
+                if ($('fav')?.classList.contains('on')) showSaved('fav');
+                toast('⭐ انحفظت بالمفضلة');
+            } else {
+                toast('⚠️ موجودة بالمفضلة');
+            }
+        }
+
+        function openModal(t) {
+            selectedText = t;
+            $('modalText').textContent = t;
+            $('modal').classList.add('show');
+        }
+
+        function closeModal() { $('modal').classList.remove('show') }
+
+        // ============================================================
+        //  RENDER FUNCTIONS
+        // ============================================================
+        function renderResults(id, arr) {
+            const container = $(id);
+            if (!container) return;
+            container.innerHTML = '';
+            const kind = id === 'favOut' ? 'fav' : id === 'historyOut' ? 'history' : '';
+            arr.forEach(t => {
+                const div = document.createElement('div'); div.className = 'result';
+                const span = document.createElement('span'); span.className = 'resulttext'; span.textContent = t;
+                const actions = document.createElement('div'); actions.className = 'row';
+                const viewBtn = document.createElement('button'); viewBtn.className='secondary'; viewBtn.textContent='🔍 عرض'; viewBtn.onclick=()=>openModal(t);
+                const copyBtn = document.createElement('button'); copyBtn.className='primary'; copyBtn.textContent='📋 نسخ'; copyBtn.onclick=()=>copyText(t);
+                actions.append(viewBtn, copyBtn);
+                if (kind) {
+                    const del = document.createElement('button'); del.className='secondary'; del.textContent='🗑️ حذف';
+                    del.onclick=()=>removeSaved(kind,t); actions.appendChild(del);
+                }
+                div.append(span, actions); container.appendChild(div);
+            });
+            if (kind && arr.length) {
+                const clear=document.createElement('button'); clear.className='secondary'; clear.textContent='🗑️ مسح الكل';
+                clear.onclick=()=>clearSaved(kind); container.prepend(clear);
+            }
+        }
+
+        function removeSaved(kind, text) {
+            const key = kind === 'fav' ? 'fazar_favorites' : 'fazar_history';
+            safeSet(key, safeGet(key).filter(x => x !== text)); showSaved(kind); toast('🗑️ تم الحذف');
+        }
+        function clearSaved(kind) {
+            const key = kind === 'fav' ? 'fazar_favorites' : 'fazar_history';
+            safeSet(key, []); showSaved(kind); toast('🗑️ تم مسح الكل');
+        }
+
+        // ----- HOME -----
+        function renderHome() {
+            const container = $('homeCats');
+            if (!container) return;
+            container.innerHTML = '';
+            const cats = [...new Set(LIB.map(x => x[0]))];
+            cats.forEach(c => {
+                const item = LIB.find(x => x[0] === c);
+                const btn = document.createElement('button');
+                btn.className = 'catcard';
+                btn.innerHTML = `<b>${item ? item[1] : ''}</b><span>${c}</span>`;
+                btn.onclick = () => { selectedCategory = c;
+                    go('library');
+                    renderLibrary() };
+                container.appendChild(btn);
+            });
+        }
+
+        // ----- LIBRARY -----
+        function renderChips() {
+            const container = $('catChips');
+            if (!container) return;
+            container.innerHTML = '';
+            const cats = ['الكل', ...new Set(LIB.map(x => x[0]))];
+            cats.forEach(c => {
+                const btn = document.createElement('button');
+                btn.className = 'chip' + (c === selectedCategory ? ' on' : '');
+                btn.textContent = c;
+                btn.onclick = () => { selectedCategory = c;
+                    renderLibrary() };
+                container.appendChild(btn);
+            });
+            // Surprise cat
+            const sel = $('surpriseCat');
+            if (sel) {
+                sel.innerHTML = cats.map(x => `<option>${x}</option>`).join('');
+            }
+        }
+
+        function renderLibrary() {
+            const q = normalizeArabic($('libSearch')?.value || '');
+            const data = LIB.filter(x =>
+                (selectedCategory === 'الكل' || x[0] === selectedCategory) &&
+                normalizeArabic(x[0] + ' ' + x[1]).includes(q)
+            );
+            const container = $('libraryOut');
+            if (!container) return;
+            container.innerHTML = '';
+            data.forEach(x => {
+                const btn = document.createElement('button');
+                btn.className = 'symbol';
+                btn.textContent = x[1];
+                btn.title = x[0];
+                btn.onclick = () => openModal(x[1]);
+                container.appendChild(btn);
+            });
+        }
+
+        // ----- SPAM ZONE -----
+        let spamCategory = 'الكل';
+
+        function renderSpamChips() {
+            const container = $('spamChips');
+            if (!container) return;
+            container.innerHTML = '';
+            const cats = ['الكل', ...new Set(SPAM_LIB.map(x => x.category))];
+            cats.forEach(c => {
+                const btn = document.createElement('button');
+                btn.className = 'chip' + (c === spamCategory ? ' on' : '');
+                btn.textContent = c;
+                btn.onclick = () => { spamCategory = c;
+                    renderSpam() };
+                container.appendChild(btn);
+            });
+        }
+
+        function renderSpam() {
+            const q = normalizeArabic($('spamSearch')?.value || '');
+            let items = [];
+            SPAM_LIB.forEach(group => {
+                if (spamCategory === 'الكل' || group.category === spamCategory) {
+                    items = items.concat(group.items);
+                }
+            });
+            // remove duplicates
+            items = [...new Set(items)];
+            // filter
+            if (q) {
+                items = items.filter(x => normalizeArabic(x).includes(q));
+            }
+            const container = $('spamOut');
+            if (!container) return;
+            container.innerHTML = '';
+            items.forEach(t => {
+                const btn = document.createElement('button');
+                btn.className = 'symbol';
+                btn.textContent = t;
+                btn.onclick = () => openModal(t);
+                container.appendChild(btn);
+            });
+        }
+
+        // ----- NAMES -----
+        const MAPS = {
+            bold: ['ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789', '𝐀𝐁𝐂𝐃𝐄𝐅𝐆𝐇𝐈𝐉𝐊𝐋𝐌𝐍𝐎𝐏𝐐𝐑𝐒𝐓𝐔𝐕𝐖𝐗𝐘𝐙𝐚𝐛𝐜𝐝𝐞𝐟𝐠𝐡𝐢𝐣𝐤𝐥𝐦𝐧𝐨𝐩𝐪𝐫𝐬𝐭𝐮𝐯𝐰𝐱𝐲𝐳𝟎𝟏𝟐𝟑𝟒𝟓𝟔𝟕𝟖𝟗'],
+            italic: ['ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz', '𝐴𝐵𝐶𝐷𝐸𝐹𝐺𝐻𝐼𝐽𝐾𝐿𝑀𝑁𝑂𝑃𝑄𝑅𝑆𝑇𝑈𝑉𝑊𝑋𝑌𝑍𝑎𝑏𝑐𝑑𝑒𝑓𝑔ℎ𝑖𝑗𝑘𝑙𝑚𝑛𝑜𝑝𝑞𝑟𝑠𝑡𝑢𝑣𝑤𝑥𝑦𝑧'],
+            boldItalic: ['ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz', '𝑨𝑩𝑪𝑫𝑬𝑭𝑮𝑯𝑰𝑱𝑲𝑳𝑴𝑵𝑶𝑷𝑸𝑹𝑺𝑻𝑼𝑽𝑾𝑿𝒀𝒁𝒂𝒃𝒄𝒅𝒆𝒇𝒈𝒉𝒊𝒋𝒌𝒍𝒎𝒏𝒐𝒑𝒒𝒓𝒔𝒕𝒖𝒗𝒘𝒙𝒚𝒛'],
+            mono: ['ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789', '𝙰𝙱𝙲𝙳𝙴𝙵𝙶𝙷𝙸𝙹𝙺𝙻𝙼𝙽𝙾𝙿𝚀𝚁𝚂𝚃𝚄𝚅𝚆𝚇𝚈𝚉𝚊𝚋𝚌𝚍𝚎𝚏𝚐𝚑𝚒𝚓𝚔𝚕𝚖𝚗𝚘𝚙𝚚𝚛𝚜𝚝𝚞𝚟𝚠𝚡𝚢𝚣𝟶𝟷𝟸𝟹𝟺𝟻𝟼𝟽𝟾𝟿'],
+            double: ['ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789', '𝔸𝔹ℂ𝔻𝔼𝔽𝔾ℍ𝕀𝕁𝕂𝕃𝕄ℕ𝕆ℙℚℝ𝕊𝕋𝕌𝕍𝕎𝕏𝕐ℤ𝕒𝕓𝕔𝕕𝕖𝕗𝕘𝕙𝕚𝕛𝕜𝕝𝕞𝕟𝕠𝕡𝕢𝕣𝕤𝕥𝕦𝕧𝕨𝕩𝕪𝕫𝟘𝟙𝟚𝟛𝟜𝟝𝟞𝟠𝟡'],
+            script: ['ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz', '𝒜ℬ𝒞𝒟ℰℱ𝒢ℋℐ𝒥𝒦ℒℳ𝒩𝒪𝒫𝒬ℛ𝒮𝒯𝒰𝒱𝒲𝒳𝒴𝒵𝒶𝒷𝒸𝒹ℯ𝒻ℊ𝒽𝒾𝒿𝓀𝓁𝓂𝓃ℴ𝓅𝓆𝓇𝓈𝓉𝓊𝓋𝓌𝓍𝓎𝓏'],
+            boldScript: ['ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz', '𝓐𝓑𝓒𝓓𝓔𝓕𝓖𝓗𝓘𝓙𝓚𝓛𝓜𝓝𝓞𝓟𝓠𝓡𝓢𝓣𝓤𝓥𝓦𝓧𝓨𝓩𝓪𝓫𝓬𝓭𝓮𝓯𝓰𝓱𝓲𝓳𝓴𝓵𝓶𝓷𝓸𝓹𝓺𝓻𝓼𝓽𝓾𝓿𝔀𝔁𝔂𝔃'],
+            fraktur: ['ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz', '𝔄𝔅ℭ𝔇𝔈𝔉𝔊ℌℑ𝔍𝔎𝔏𝔐𝔑𝔒𝔓𝔔ℜ𝔖𝔗𝔘𝔙𝔚𝔛𝔜ℨ𝔞𝔟𝔠𝔡𝔢𝔣𝔤𝔥𝔦𝔧𝔨𝔩𝔪𝔫𝔬𝔭𝔮𝔯𝔰𝔱𝔲𝔳𝔴𝔵𝔶𝔷'],
+            boldFraktur: ['ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz', '𝕬𝕭𝕮𝕯𝕰𝕱𝕲𝕳𝕴𝕵𝕶𝕷𝕸𝕹𝕺𝕻𝕼𝕽𝕾𝕿𝖀𝖁𝖂𝖃𝖄𝖅𝖆𝖇𝖈𝖉𝖊𝖋𝖌𝖍𝖎𝖏𝖐𝖑𝖒𝖓𝖔𝖕𝖖𝖗𝖘𝖙𝖚𝖛𝖜𝖝𝖞𝖟'],
+            sans: ['ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789', '𝖠𝖡𝖢𝖣𝖤𝖥𝖦𝖧𝖨𝖩𝖪𝖫𝖬𝖭𝖮𝖯𝖰𝖱𝖲𝖳𝖴𝖵𝖶𝖷𝖸𝖹𝖺𝖻𝖼𝖽𝖾𝖿𝗀𝗁𝗂𝗃𝗄𝗅𝗆𝗇𝗈𝗉𝗊𝗋𝗌𝗍𝗎𝗏𝗐𝗑𝗒𝗓𝟢𝟣𝟤𝟥𝟦𝟧𝟨𝟩𝟪𝟫'],
+            sansBold: ['ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789', '𝗔𝗕𝗖𝗗𝗘𝗙𝗚𝗛𝗜𝗝𝗞𝗟𝗠𝗡𝗢𝗣𝗤𝗥𝗦𝗧𝗨𝗩𝗪𝗫𝗬𝗭𝗮𝗯𝗰𝗱𝗲𝗳𝗴𝗵𝗶𝗷𝗸𝗹𝗺𝗻𝗼𝗽𝗾𝗿𝘀𝘁𝘂𝘃𝘄𝘅𝘆𝘇𝟬𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵'],
+            circled: ['ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789', 'ⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩ⓪①②③④⑤⑥⑦⑧⑨'],
+            squared: ['ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', '🄰🄱🄲🄳🄴🄵🄶🄷🄸🄹🄺🄻🄼🄽🄾🄿🅀🅁🅂🅃🅄🅅🅆🅇🅈🅉⓿❶❷❸❹❺❻❼❽❾']
+        };
+
+        function unicodeFont(t, k) {
+            const m = MAPS[k];
+            if (!m) return t;
+            return [...t].map(ch => {
+                const i = m[0].indexOf(ch);
+                return i < 0 ? ch : [...m[1]][i];
+            }).join('');
+        }
+
+        function makeNames() {
+            const raw = $('nameInput')?.value?.trim();
+            if (!raw) return toast('✍️ اكتب الاسم أول');
+
+            const font = $('fontSel')?.value || 'all';
+            const fonts = font === 'all' ? ['normal', ...Object.keys(MAPS)] : [font];
+            const results = [];
+            const seen = new Set();
+
+            const add = value => {
+                if (value && !seen.has(value)) {
+                    seen.add(value);
+                    results.push(value);
+                }
+            };
+
+            fonts.forEach(key => {
+                const styled = key === 'normal' ? raw : unicodeFont(raw, key);
+                add(styled);
+
+                // Strong frames: Arabic and English both stay intact.
+                FRAMES.forEach(f => add(f.replaceAll('{T}', styled)));
+
+                // Extra legendary Arabic/English combinations.
+                [
+                    `꧁༺ ${styled} ༻꧂`,
+                    `𓆩 ${styled} 𓆪`,
+                    `『 ${styled} 』`,
+                    `【 ${styled} 】`,
+                    `𖤐 ${styled} 𖤐`,
+                    `♛ ${styled} ♛`,
+                    `༒ ${styled} ༒`,
+                    `★彡 ${styled} 彡★`,
+                    `乂 ${styled} 乂`,
+                    `〆 ${styled} 〆`,
+                    `亗 ${styled} 亗`,
+                    `꒰ ${styled} ꒱`,
+                    `୨ৎ ${styled} ୨ৎ`,
+                    `✦ ${styled} ✦`,
+                    `⟦ ${styled} ⟧`
+                ].forEach(add);
+            });
+
+            renderResults('nameOut', results);
+        }
+
+        function quickGo() {
+            const q = $('quick')?.value?.trim();
+            if (!q) return toast('✍️ اكتب اسم أو كلمة بحث');
+            const normalized = normalizeArabic(q);
+            const matches = LIB.filter(x => normalizeArabic(x[0] + ' ' + x[1]).includes(normalized));
+            if (matches.length) {
+                const libSearch = $('libSearch');
+                if (libSearch) libSearch.value = q;
+                selectedCategory = 'الكل';
+                renderChips();
+                go('library');
+                renderLibrary();
+                return;
+            }
+            const nameInput = $('nameInput');
+            if (nameInput) nameInput.value = q;
+            go('names');
+            makeNames();
+        }
+
+        // ----- SOCIAL -----
+        const PLATFORM = {
+            WhatsApp: [
+                ['عريض', '**', '**'],
+                ['مائل', '_', '_'],
+                ['مشطوب', '~', '~'],
+                ['كود', '`', '`']
+            ],
+            Telegram: [
+                ['عريض', '**', '**'],
+                ['مائل', '__', '__'],
+                ['مخفي', '||', '||'],
+                ['كود', '`', '`']
+            ],
+            Discord: [
+                ['عريض', '**', '**'],
+                ['مائل', '*', '*'],
+                ['مشطوب', '~~', '~~'],
+                ['مخفي', '||', '||']
+            ],
+            Instagram: [
+                ['نجوم', '✦ ', ' ✦'],
+                ['إطار', '꧁ ', ' ꧂'],
+                ['قلوب', '♡ ', ' ♡']
+            ],
+            TikTok: [
+                ['ملكي', '♛ ', ' ♛'],
+                ['دارك', '𖤐 ', ' 𖤐'],
+                ['كيوت', '୨ৎ ', ' ୨ৎ']
+            ],
+            YouTube: [
+                ['عنوان', '★ ', ' ★'],
+                ['فاصل', '━━ ', ' ━━'],
+                ['رموز', '✦ ', ' ✦']
+            ]
+        };
+
+        function renderSocial() {
+            const pt = $('platformTabs');
+            if (!pt) return;
+            pt.innerHTML = '';
+            Object.keys(PLATFORM).forEach(p => {
+                const btn = document.createElement('button');
+                btn.className = 'tab' + (p === platform ? ' on' : '');
+                btn.textContent = p;
+                btn.onclick = () => { platform = p;
+                    formatIndex = 0;
+                    renderSocial() };
+                pt.appendChild(btn);
+            });
+            const ft = $('formatTabs');
+            if (!ft) return;
+            ft.innerHTML = '';
+            PLATFORM[platform].forEach((f, i) => {
+                const btn = document.createElement('button');
+                btn.className = 'tab' + (i === formatIndex ? ' on' : '');
+                btn.textContent = f[0];
+                btn.onclick = () => { formatIndex = i;
+                    updateSocial() };
+                ft.appendChild(btn);
+            });
+            updateSocial();
+        }
+
+        function updateSocial() {
+            const f = PLATFORM[platform][formatIndex];
+            const input = $('socialInput');
+            if (!input) return;
+            const t = input.value || '';
+            socialResult = f[1] + t + f[2];
+            const preview = $('socialPreview');
+            if (preview) preview.textContent = socialResult;
+        }
+
+        // ----- BIO -----
+        function makeBio() {
+            const n = $('bioName')?.value?.trim() || 'اسمك';
+            const d = $('bioDesc')?.value?.trim() || 'اكتب وصفك هون';
+            const s = $('bioStyle')?.value || 'royal';
+            let a;
+            if (s === 'royal') a = ['♛', '✦', '𓆩', '𓆪'];
+            else if (s === 'cute') a = ['♡', '୨ৎ', '꒰', '꒱'];
+            else if (s === 'dark') a = ['☾', '༒', '𖤐', '𖤐'];
+            else a = ['•', '—', '[', ']'];
+            renderResults('bioOut', [
+                `${a[0]} ${n} ${a[0]}\n${a[1]} ${d} ${a[1]}\n${a[2]} BIKE RIDE ${a[3]}`,
+                `${a[2]} ${n} ${a[3]}\n${d}\n${a[1]}`
+            ]);
+        }
+
+        // ----- REQUEST -----
+        function makeRequest() {
+            const t = $('reqText')?.value?.trim() || 'BIKE RIDE';
+            const d = normalizeArabic($('reqDesc')?.value || '');
+            let pool;
+            if (d.includes('كيوت') || d.includes('حب')) pool = ['♡', '୨ৎ', '꒰', '꒱', '𐙚'];
+            else if (d.includes('دارك') || d.includes('غامق')) pool = ['☠', '༒', '☾', '𖤐', '⛧'];
+            else if (d.includes('لعب') || d.includes('قيم')) pool = ['乂', 'メ', '〆', '亗', '彡'];
+            else if (d.includes('ملكي') || d.includes('تاج')) pool = ['♛', '♕', '👑', '✦', '𓆩'];
+            else pool = ['꧁', '✦', '★', '❖', '⟡'];
+            const arr = [];
+            for (let i = 0; i < pool.length; i++) {
+                for (let j = i; j < pool.length; j++) {
+                    arr.push(`${pool[i]} ${t} ${pool[j]}`);
+                }
+            }
+            renderResults('reqOut', arr);
+        }
+
+        // ----- STUDIO -----
+        function studioTab(id, btn) {
+            document.querySelectorAll('.tool').forEach(x => x.classList.remove('on'));
+            const target = $(id);
+            if (target) target.classList.add('on');
+            document.querySelectorAll('#studio .tab').forEach(x => x.classList.remove('on'));
+            if (btn) btn.classList.add('on');
+        }
+
+        function studioValue() {
+            const frame = $('frameSel');
+            const text = $('studioText');
+            if (!frame || !text) return '';
+            return frame.value.replaceAll('{T}', text.value || 'BIKE RIDE');
+        }
+
+        function updateStudio() {
+            const preview = $('studioPreview');
+            if (!preview) return;
+            preview.textContent = studioValue();
+            const tc = $('textColor');
+            const bc = $('borderColor');
+            const fs = $('fontSize');
+            const paper = $('paper');
+            if (tc) preview.style.color = tc.value;
+            if (fs) preview.style.fontSize = fs.value + 'px';
+            if (bc && paper) paper.style.borderColor = bc.value;
+        }
+
+        function surprise() {
+            const cat = $('surpriseCat')?.value || 'الكل';
+            let items = [];
+            LIB.forEach(x => {
+                if (cat === 'الكل' || x[0] === cat) items.push(x[1]);
+            });
+            items = [...new Set(items)].sort(() => Math.random() - 0.5).slice(0, 60);
+            const container = $('surpriseOut');
+            if (!container) return;
+            container.innerHTML = '';
+            items.forEach(t => {
+                const btn = document.createElement('button');
+                btn.className = 'symbol';
+                btn.textContent = t;
+                btn.onclick = () => openModal(t);
+                container.appendChild(btn);
+            });
+        }
+
+        function wrap(a, b) {
+            const x = $('formatInput');
+            if (!x) return;
+            const s = x.selectionStart,
+                e = x.selectionEnd;
+            const before = x.value.slice(0, s);
+            const selected = x.value.slice(s, e);
+            const after = x.value.slice(e);
+            x.value = before + a + selected + b + after;
+            x.focus();
+            if (s === e) {
+                const pos = s + a.length;
+                x.setSelectionRange(pos, pos);
+            } else {
+                x.setSelectionRange(s + a.length, s + a.length + selected.length);
+            }
+        }
+
+        // ----- PACKS -----
+        const PACKS = [
+            '𓆩 اسمك 𓆪\n♡ وصفك هون ♡\n────୨ৎ────',
+            '〆 اسمك 亗\n乂 GAMER 乂\n★彡 READY 彡★',
+            '♛ اسمك ♛\n✦ ملكي وفخم ✦\n𓆩 BIKE RIDE 𓆪',
+            '**عنوان الرسالة**\n_ملاحظة مهمة_\n~نص ملغى~',
+            '꧁༒ اسمك ༒꧂\n☾ Dark Profile ☽\n────────',
+            '୨ৎ اسمك ୨ৎ\n꒰ اكتب بايو كيوت هون ꒱\n𐙚'
+        ];
+
+        function renderPacks() {
+            renderResults('packsOut', PACKS);
+        }
+
+        // ----- FAV / HISTORY -----
+        function showSaved(kind) {
+            const key = kind === 'fav' ? 'fazar_favorites' : 'fazar_history';
+            const data = safeGet(key);
+            const container = $(kind === 'fav' ? 'favOut' : 'historyOut');
+            if (!container) return;
+            if (data.length) {
+                renderResults(container.id, data);
+            } else {
+                container.innerHTML = '<div class="card muted">📭 لسا ما في شي هون.</div>';
+            }
+        }
+
+        // ============================================================
+        //  INIT
+        // ============================================================
+        (function init() {
+            // Frames dropdown
+            const frameSel = $('frameSel');
+            if (frameSel) {
+                frameSel.innerHTML = FRAMES.map(x => `<option value="${x.replace(/"/g, '&quot;')}">${x.replace('{T}', 'نص')}</option>`).join('');
+            }
+
+            renderHome();
+            renderChips();
+            renderLibrary();
+            renderSocial();
+            renderPacks();
+            renderSpamChips();
+            renderSpam();
+            updateStudio();
+
+            // Close sidebar on outside click
+            document.addEventListener('click', (e) => {
+                const side = $('side');
+                if (side && side.classList.contains('open')) {
+                    const isClickInside = side.contains(e.target) || e.target.closest('.menu');
+                    if (!isClickInside) side.classList.remove('open');
+                }
+            });
+
+            // Close modal on outside click
+            const modal = $('modal');
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeModal();
+                });
+            }
+
+            console.log('🔥 BIKE RIDE ULTRA loaded successfully!');
+        })();
+    </script>
+
+<script>
+(function(){
+  try{
+    if(localStorage.getItem('fazar_theme')==='light'){
+      document.body.classList.add('light');
+    }
+    const b=document.getElementById('themeBtn');
+    if(b) b.textContent=document.body.classList.contains('light')?'🌙':'☀️';
+  }catch(e){}
+})();
+function toggleTheme(){
+  const light=document.body.classList.toggle('light');
+  const b=document.getElementById('themeBtn');
+  if(b) b.textContent=light?'🌙':'☀️';
+  try{localStorage.setItem('fazar_theme',light?'light':'dark');}catch(e){}
+}
+</script>
+
+
+<script>
+// Bike Ride newspaper trend maker — self-contained, no external libraries.
+let trendRAF=null, trendStart=0, trendLast=0;
+function trendEl(id){return document.getElementById(id)}
+function drawTrendFrame(t=0){
+ const c=trendEl('trendCanvas'); if(!c)return; const x=c.getContext('2d'), w=c.width,h=c.height;
+ const name=(trendEl('trendName')?.value||'BIKE RIDE').trim().slice(0,42);
+ const headline=(trendEl('trendHeadline')?.value||'الشخصية التي يتحدث عنها الجميع').trim().slice(0,70);
+ const sub=(trendEl('trendSub')?.value||'اسم يتصدر المشهد اليوم').trim().slice(0,90);
+ const marker=trendEl('trendMarker')?.value||'#e3bd42';
+ x.clearRect(0,0,w,h); x.fillStyle='#0a0709';x.fillRect(0,0,w,h);
+ const g=x.createRadialGradient(w*.5,h*.45,20,w*.5,h*.45,w*.8);g.addColorStop(0,'#35101f');g.addColorStop(1,'#080608');x.fillStyle=g;x.fillRect(0,0,w,h);
+ // subtle film grain / framing
+ x.strokeStyle='#7c2844';x.lineWidth=3;x.strokeRect(26,26,w-52,h-52);
+ x.fillStyle='#f0e8df';x.fillRect(48,70,w-96,h-140);
+ // several sliding newspaper sheets
+ for(let i=0;i<5;i++){
+   const phase=(t*(Number(trendEl('trendSpeed')?.value)||1.5)+i*.23)%1;
+   const px=70+Math.sin(phase*Math.PI*2+i)*35, py=115+i*205+(phase*100-50);
+   x.save();x.translate(px,py);x.rotate(Math.sin(phase*6.28+i)*.035);
+   x.fillStyle=i%2?'#ded5c9':'#f7f0e6';x.fillRect(0,0,570,250);
+   x.fillStyle='#1a1115';x.fillRect(18,16,534,3);
+   x.font='bold 22px Georgia, serif';x.textAlign='left';x.fillStyle='#291820';x.fillText(i%2?'THE DAILY EDITION':'SPECIAL REPORT',22,48);
+   x.fillStyle='#aaa09a';for(let r=0;r<5;r++)x.fillRect(22,70+r*24,150+(r%3)*65,5);
+   x.fillStyle='#b7ada4';x.fillRect(360,70,180,95);x.fillStyle='#d0c5bb';x.fillRect(372,82,156,71);
+   x.fillStyle='#77706b';for(let r=0;r<3;r++)x.fillRect(360,180+r*17,175-(r%2)*40,4);
+   x.restore();
+ }
+ // foreground hero newspaper panel
+ x.save();x.translate(w/2,h*.51);x.rotate(Math.sin(t*2)*.012);x.translate(-w/2,-h*.51);
+ x.fillStyle='#f8f0e5';x.fillRect(54,360,612,490);x.strokeStyle='#27141c';x.lineWidth=5;x.strokeRect(54,360,612,490);
+ x.fillStyle='#27141c';x.textAlign='center';x.font='bold 26px Georgia,serif';x.fillText('THE DAILY • SPECIAL EDITION',w/2,405);
+ x.fillRect(82,425,556,4);
+ x.fillStyle='#21151a';x.font='bold 34px sans-serif';wrapCanvasText(x,headline,w/2,480,530,43,2);
+ x.fillStyle='#77706a';x.font='20px sans-serif';wrapCanvasText(x,sub,w/2,565,510,30,2);
+ // highlighted handwritten-style name
+ const nw=Math.min(550,Math.max(210,x.measureText(name).width+65)), nx=(w-nw)/2, ny=635;
+ x.save();x.translate(w/2,ny);x.rotate(-.035+Math.sin(t*3)*.008);x.strokeStyle=marker;x.lineWidth=24;x.globalAlpha=.52;x.lineCap='round';x.beginPath();x.moveTo(-nw/2,0);x.lineTo(nw/2,3);x.stroke();x.globalAlpha=1;
+ x.fillStyle='#180c11';x.font='italic bold 58px "Segoe Script", "Brush Script MT", cursive';x.textAlign='center';x.textBaseline='middle';x.fillText(name,0,0,520);x.restore();
+ x.strokeStyle=marker;x.lineWidth=5;x.globalAlpha=.9;x.beginPath();x.moveTo(nx+15,ny+39);x.quadraticCurveTo(w/2,ny+56,nx+nw-15,ny+35);x.stroke();x.globalAlpha=1;
+ x.fillStyle='#2a1b20';x.fillRect(82,720,556,2);x.fillStyle='#72665f';x.font='16px Georgia,serif';x.fillText('CULTURE • PEOPLE • STORIES',w/2,755);
+ x.restore();
+ // bottom brand strip
+ x.fillStyle='#130910';x.fillRect(0,h-190,w,190);x.fillStyle='#b52b50';x.fillRect(0,h-190,w,5);
+ x.textAlign='center';x.fillStyle='#fff1f4';x.font='bold 40px sans-serif';x.fillText('BIKE RIDE',w/2,h-112);
+ x.fillStyle='#d84a68';x.font='20px sans-serif';x.fillText('A NAME EVERYONE NOTICES',w/2,h-72);
+ x.fillStyle='#a78d96';x.font='15px sans-serif';x.fillText('NEWSPAPER TREND INTRO • LOOP STYLE',w/2,h-40);
+}
+function wrapCanvasText(ctx,text,x,y,maxWidth,lineHeight,maxLines){const words=String(text).split(/\s+/);let line='',lines=[];for(const word of words){const test=line?line+' '+word:word;if(ctx.measureText(test).width>maxWidth&&line){lines.push(line);line=word}else line=test}if(line)lines.push(line);lines=lines.slice(0,maxLines);ctx.textAlign='center';lines.forEach((l,i)=>ctx.fillText(l,x,y+i*lineHeight,maxWidth))}
+function trendTick(ts){if(!trendStart)trendStart=ts;const t=(ts-trendStart)/1000;drawTrendFrame(t);trendRAF=requestAnimationFrame(trendTick)}
+function startTrendPreview(){stopTrendPreview();trendStart=0;trendRAF=requestAnimationFrame(trendTick);if(trendEl('trendStatus'))trendEl('trendStatus').textContent='المعاينة تعمل — حركة الجرائد والتمييز بالقلم مفعّلة.'}
+function stopTrendPreview(){if(trendRAF)cancelAnimationFrame(trendRAF);trendRAF=null;drawTrendFrame(0);if(trendEl('trendStatus'))trendEl('trendStatus').textContent='تم إيقاف المعاينة.'}
+async function recordTrendVideo(){const c=trendEl('trendCanvas'),status=trendEl('trendStatus');if(!c)return;if(!c.captureStream||!window.MediaRecorder){status.textContent='المتصفح لا يدعم تسجيل الفيديو من Canvas. جرّب Chrome حديثاً.';return}let mime='video/webm;codecs=vp9';if(!MediaRecorder.isTypeSupported(mime))mime='video/webm';if(!MediaRecorder.isTypeSupported(mime)){status.textContent='صيغة تسجيل الفيديو غير مدعومة في هذا المتصفح.';return}try{stopTrendPreview();drawTrendFrame(0);const stream=c.captureStream(30),chunks=[],rec=new MediaRecorder(stream,{mimeType:mime,videoBitsPerSecond:5000000});rec.ondataavailable=e=>{if(e.data&&e.data.size)chunks.push(e.data)};rec.onstop=()=>{const blob=new Blob(chunks,{type:mime}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='bike-ride-newspaper-trend.webm';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);stream.getTracks().forEach(t=>t.stop());status.textContent='تم إنشاء الفيديو! إذا لم يبدأ التنزيل تلقائياً، تحقق من تنزيلات المتصفح.'};rec.start();status.textContent='جارٍ تسجيل المقطع لمدة 8 ثوانٍ…';const begin=performance.now();function capture(now){drawTrendFrame((now-begin)/1000);if(now-begin<8000)requestAnimationFrame(capture);else rec.stop()}requestAnimationFrame(capture)}catch(e){status.textContent='تعذر التسجيل: '+e.message}}
+// Ensure canvas has an initial preview after page load.
+window.addEventListener('load',()=>drawTrendFrame(0));
+</script>
+
+</body>
+</html>
